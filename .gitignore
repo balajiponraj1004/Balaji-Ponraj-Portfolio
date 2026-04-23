@@ -1,0 +1,14 @@
+.DS_Store
+*.DS_Store
+Thumbs.db
+*.tmp
+*.aep
+*.prproj
+*.prin
+*.psd
+*.ai
+*.indd
+*.indt
+*.ait
+*.idml
+*.cdr

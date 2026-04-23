@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manam Canteen — Complete brand identity system designed by Balaji Ponraj. Logo, visual language, packaging, social media, video, and business development design for an Indian restaurant in Canada.">
+  <meta name="keywords" content="Manam Canteen, Brand Identity Design, Restaurant Branding, Graphic Designer Canada, Balaji Ponraj, Logo Design, Indian Restaurant Branding">
+  <title>Manam Canteen — Brand Identity Case Study | Balaji Ponraj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* ── Manam Canteen brand palette ── */
+    :root {
+      --brand-primary:   #C8511A;
+      --brand-secondary: #E8A44A;
+      --brand-dark:      #1C0A03;
+      --brand-cream:     #FBF5EC;
+      --brand-earthy:    #8B5E3C;
+    }
+    .cs-hero-bg-manam {
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(200,81,26,0.22), transparent 70%),
+        radial-gradient(ellipse 50% 80% at 20% 80%, rgba(140,94,60,0.15), transparent 60%),
+        linear-gradient(170deg, #0A0200 0%, #1C0A03 40%, #2E1205 100%);
+    }
+    .manam-mockup-1 { background: linear-gradient(135deg,#1C0A03 0%,#6B2E0F 30%,#C8511A 60%,#E8A44A 100%); }
+    .manam-mockup-2 { background: linear-gradient(135deg,#FBF5EC 0%,#E8D5B0 50%,#C8A06A 100%); }
+    .manam-mockup-3 { background: linear-gradient(135deg,#1C0A03 0%,#3D1A08 40%,#8B5E3C 100%); }
+    .manam-mockup-4 { background: linear-gradient(180deg,#C8511A 0%,#E8A44A 100%); }
+    .manam-accent { color: var(--brand-primary); }
+
+    /* Colour swatches */
+    .swatch-grid { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+    .swatch {
+      flex:1; min-width:100px; border-radius:var(--r-md);
+      overflow:hidden; border:1px solid var(--border);
+    }
+    .swatch-color { height:80px; }
+    .swatch-info { padding:10px 12px; background:var(--bg-card); }
+    .swatch-name { font-size:12px; font-weight:600; color:var(--ink); }
+    .swatch-hex  { font-size:11px; color:var(--ink-3); font-family:monospace; }
+
+    /* Typography showcase */
+    .type-showcase {
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:var(--r-lg); padding:40px; margin-top:24px;
+    }
+    .type-display {
+      font-family:var(--font-d); font-size:clamp(36px,5vw,64px);
+      font-weight:800; letter-spacing:-2px; line-height:1.1;
+      margin-bottom:8px;
+    }
+    .type-label { font-size:12px; color:var(--ink-3); letter-spacing:2px; text-transform:uppercase; margin-bottom:24px; }
+    .type-body-sample { font-size:15px; color:var(--ink-2); line-height:1.8; }
+
+    /* Deliverable grid */
+    .deliverable-grid {
+      display:grid; grid-template-columns:repeat(auto-fill, minmax(180px,1fr));
+      gap:12px; margin-top:24px;
+    }
+    .deliverable-item {
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:var(--r-md); padding:16px;
+      display:flex; align-items:center; gap:12px;
+      transition:border-color 0.3s;
+    }
+    .deliverable-item:hover { border-color:var(--border-md); }
+    .deliverable-icon { font-size:22px; flex-shrink:0; }
+    .deliverable-name { font-size:13px; color:var(--ink); font-weight:500; line-height:1.3; }
+
+    /* Timeline visual for process */
+    .cs-process-grid {
+      display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
+      gap:16px; margin-top:32px;
+    }
+    .cs-process-step {
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:var(--r-md); padding:24px;
+      transition:border-color 0.3s;
+    }
+    .cs-process-step:hover { border-color:var(--brand-primary); }
+    .cs-process-num {
+      font-family:var(--font-d); font-size:36px; font-weight:800;
+      color:var(--brand-primary); opacity:0.4; line-height:1; margin-bottom:8px;
+    }
+    .cs-process-title { font-family:var(--font-d); font-size:16px; font-weight:700; color:var(--ink); margin-bottom:8px; }
+    .cs-process-desc { font-size:13px; color:var(--ink-2); line-height:1.6; }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cursor" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Back to portfolio">BP <span></span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#projects">Work</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="assets/BALAJI_PONRAJ_Resume.pdf" target="_blank" class="nav-cta desktop">Download CV</a></li>
+      </ul>
+      <button id="nav-burger" class="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-nav" aria-hidden="true">
+    <ul class="mobile-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#projects">Work</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ══ HERO ════════════════════════════════════════ -->
+  <section class="cs-hero">
+    <div class="cs-hero-bg cs-hero-bg-manam"></div>
+
+    <!-- Decorative grain grid overlay -->
+    <div class="hero-grid" style="opacity:0.4" aria-hidden="true"></div>
+
+    <div class="wrap cs-hero-content" style="width:100%">
+      <a href="index.html#projects" class="cs-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back to All Work
+      </a>
+
+      <div class="cs-category">Brand Identity &amp; Strategy · Restaurant · Canada</div>
+      <h1 class="cs-title">Manam Canteen</h1>
+      <p class="cs-subtitle">A complete visual identity system — from naming concept to packaging, social media, video, and business development collateral — for an authentic Indian restaurant.</p>
+
+      <div class="cs-meta-strip">
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Client</div>
+          <div class="cs-meta-value">Manam Canteen</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Category</div>
+          <div class="cs-meta-value">Brand Identity · Print · Digital · Video</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Scope</div>
+          <div class="cs-meta-value">End-to-End Branding</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Duration</div>
+          <div class="cs-meta-value">2024 – Ongoing</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Tools</div>
+          <div class="cs-meta-value">Illustrator · InDesign · Photoshop · Premiere Pro · After Effects</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CASE STUDY BODY ════════════════════════════ -->
+  <div class="cs-body">
+    <div class="wrap">
+
+      <!-- Full bleed hero mockup -->
+      <div class="cs-img-block reveal" style="aspect-ratio:21/9; margin-bottom:80px;">
+        <img class="cs-real-img" src="assets/images/manam/grand-opening-01.jpg" alt="Manam Canteen Grand Opening brand design" loading="lazy">
+      </div>
+
+      <!-- Overview + Challenge -->
+      <div class="cs-two-col" style="gap:64px; margin-bottom:80px;">
+        <div>
+          <div class="cs-section">
+            <div class="cs-section-label reveal">Overview</div>
+            <h2 class="cs-section-title reveal delay-1">The Brief</h2>
+            <p class="cs-text reveal delay-2">
+              Manam Canteen needed more than a logo — they needed a brand identity with the warmth and authenticity of home cooking, combined with the visual confidence to compete in Canada's crowded food service market.
+            </p>
+            <p class="cs-text reveal delay-3">
+              The challenge was balancing cultural richness with modern appeal: creating something that felt deeply Indian yet immediately accessible to a diverse Canadian audience — without resorting to clichés.
+            </p>
+          </div>
+          <div class="cs-section" style="margin-top:0">
+            <div class="cs-section-label reveal">The Problem</div>
+            <h2 class="cs-section-title reveal delay-1">No visual identity.<br>No brand story.</h2>
+            <p class="cs-text reveal delay-2">
+              The restaurant was operating without any consistent visual language. Menus, social media, and signage were mismatched, making it impossible to build brand recognition or communicate the quality of the food and experience.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="cs-section">
+            <div class="cs-section-label reveal">Objective</div>
+            <h2 class="cs-section-title reveal delay-1">Build a brand<br>from the ground up.</h2>
+            <p class="cs-text reveal delay-2">
+              Design a complete, scalable brand identity system that communicates warmth, authenticity, and quality. The system needed to work across print collateral, digital platforms, signage, packaging, and video — with room to grow as the business expanded.
+            </p>
+          </div>
+
+          <!-- Key deliverables preview -->
+          <div class="deliverable-grid reveal delay-2">
+            <div class="deliverable-item"><span class="deliverable-icon">🔴</span><span class="deliverable-name">Primary Logo System</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">📐</span><span class="deliverable-name">Brand Guidelines</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">🎨</span><span class="deliverable-name">Colour &amp; Type System</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">📸</span><span class="deliverable-name">Photography Direction</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">📱</span><span class="deliverable-name">Social Media Templates</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">🎬</span><span class="deliverable-name">Promotional Video</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">📋</span><span class="deliverable-name">Menu Card Design</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">📄</span><span class="deliverable-name">Business Proposal</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">🏷️</span><span class="deliverable-name">Signage &amp; Packaging</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">🤝</span><span class="deliverable-name">Franchise Manual</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual System -->
+      <div class="cs-section">
+        <div class="cs-section-label reveal">Visual System</div>
+        <h2 class="cs-section-title reveal delay-1">Warmth. Craft. Authenticity.</h2>
+        <p class="cs-text reveal delay-2" style="max-width:680px">The visual language draws from the warm earth tones of Indian spice markets, combined with clean modern typography and intentional white space — creating a brand that feels both traditional and contemporary.</p>
+
+        <!-- Colour palette -->
+        <div class="swatch-grid reveal delay-2">
+          <div class="swatch">
+            <div class="swatch-color" style="background:#C8511A;"></div>
+            <div class="swatch-info"><div class="swatch-name">Saffron Ember</div><div class="swatch-hex">#C8511A</div></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#E8A44A;"></div>
+            <div class="swatch-info"><div class="swatch-name">Golden Turmeric</div><div class="swatch-hex">#E8A44A</div></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#1C0A03;"></div>
+            <div class="swatch-info"><div class="swatch-name">Masala Night</div><div class="swatch-hex">#1C0A03</div></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#FBF5EC;"></div>
+            <div class="swatch-info"><div class="swatch-name">Cream Canvas</div><div class="swatch-hex">#FBF5EC</div></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#8B5E3C;"></div>
+            <div class="swatch-info"><div class="swatch-name">Cardamom Brown</div><div class="swatch-hex">#8B5E3C</div></div>
+          </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="type-showcase reveal delay-3">
+          <div class="type-display" style="color:#C8511A;">Manam Canteen</div>
+          <div class="type-label">Display — Fraunces 800 · Variable Optical Size</div>
+          <div class="type-body-sample">
+            "Manam" means heart or mind in Tamil — a name that grounds every visual decision in the brand's most essential truth: food made with soul. The typography system balances bold presence with warm readability.
+          </div>
+        </div>
+      </div>
+
+      <!-- Mockup gallery 2-col -->
+      <div class="cs-two-col" style="margin-bottom:64px;">
+        <div class="cs-img-block reveal">
+          <img class="cs-real-img" src="assets/images/manam/grand-opening-02.jpg" alt="Manam Canteen brand visual — Grand Opening design 2" loading="lazy">
+        </div>
+        <div class="cs-img-block reveal delay-1">
+          <img class="cs-real-img" src="assets/images/manam/insta-post-01.jpg" alt="Manam Canteen Instagram post template 1080x1350" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="cs-section">
+        <div class="cs-section-label reveal">Creative Process</div>
+        <h2 class="cs-section-title reveal delay-1">How we got there.</h2>
+
+        <div class="cs-process-grid">
+          <div class="cs-process-step reveal">
+            <div class="cs-process-num">01</div>
+            <div class="cs-process-title">Brand Discovery</div>
+            <div class="cs-process-desc">Deep-dive into the restaurant's story, target audience, competitive landscape in the Canadian food market, and the cultural values to be communicated.</div>
+          </div>
+          <div class="cs-process-step reveal delay-1">
+            <div class="cs-process-num">02</div>
+            <div class="cs-process-title">Moodboarding</div>
+            <div class="cs-process-desc">Created directional moodboards blending South Indian visual culture, modern editorial design, and premium restaurant aesthetics. Signed off by stakeholders.</div>
+          </div>
+          <div class="cs-process-step reveal delay-2">
+            <div class="cs-process-num">03</div>
+            <div class="cs-process-title">Logo Development</div>
+            <div class="cs-process-desc">Explored 12 logo concepts across three visual directions — wordmark, emblem, and combination mark. Refined to primary, secondary, and round logo variations.</div>
+          </div>
+          <div class="cs-process-step reveal delay-3">
+            <div class="cs-process-num">04</div>
+            <div class="cs-process-title">System Build</div>
+            <div class="cs-process-desc">Developed the complete colour system, typography hierarchy, brand patterns, illustration style, and photography direction as an integrated design system.</div>
+          </div>
+          <div class="cs-process-step reveal delay-4">
+            <div class="cs-process-num">05</div>
+            <div class="cs-process-title">Collateral Production</div>
+            <div class="cs-process-desc">Applied the brand system across 10+ touchpoints: menus, social media templates, packaging, signage, business proposal, and promotional video.</div>
+          </div>
+          <div class="cs-process-step reveal delay-5">
+            <div class="cs-process-num">06</div>
+            <div class="cs-process-title">Brand Guidelines</div>
+            <div class="cs-process-desc">Delivered comprehensive brand guidelines, editable source files, and a franchise manual to ensure consistent application as the brand grows.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Media real image row -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:80px;">
+        <div class="cs-img-block reveal" style="aspect-ratio:1;">
+          <img class="cs-real-img" src="assets/images/manam/grand-opening-03.jpg" alt="Manam Canteen social media post" loading="lazy">
+        </div>
+        <div class="cs-img-block reveal delay-1" style="aspect-ratio:1;">
+          <img class="cs-real-img" src="assets/images/manam/grand-opening-04.jpg" alt="Manam Canteen Grand Opening social post" loading="lazy">
+        </div>
+        <div class="cs-img-block reveal delay-2" style="aspect-ratio:1;">
+          <img class="cs-real-img" src="assets/images/manam/insta-post-02.jpg" alt="Manam Canteen Instagram template" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Outcomes -->
+      <div class="cs-section">
+        <div class="cs-section-label reveal">Results &amp; Impact</div>
+        <h2 class="cs-section-title reveal delay-1">Brand that delivers.</h2>
+
+        <div class="cs-outcome-grid">
+          <div class="cs-outcome-card reveal">
+            <div class="cs-outcome-num">10+</div>
+            <div class="cs-outcome-desc">Brand touchpoints designed and deployed — from logo to franchise manual</div>
+          </div>
+          <div class="cs-outcome-card reveal delay-1">
+            <div class="cs-outcome-num">30%</div>
+            <div class="cs-outcome-desc">Organic engagement increase on Instagram within 90 days of brand launch</div>
+          </div>
+          <div class="cs-outcome-card reveal delay-2">
+            <div class="cs-outcome-num">100%</div>
+            <div class="cs-outcome-desc">Brand-consistent output across all digital and print touchpoints from day one</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial -->
+      <div class="cs-testimonial reveal">
+        <p class="cs-quote">
+          "Balaji understood exactly what we needed — not just a logo, but a brand that tells our story.
+          From the colour choices to the social media templates, every element feels like it belongs to Manam.
+          The quality and attention to detail were exceptional."
+        </p>
+        <div class="cs-quote-author">Manam Canteen Team</div>
+        <div class="cs-quote-role">Restaurant Owner · Mississauga, Ontario</div>
+      </div>
+
+      <!-- Tools -->
+      <div class="cs-section" style="margin-top:60px">
+        <div class="cs-section-label reveal">Tools Used</div>
+        <div class="cs-tools-list reveal delay-1">
+          <span class="tag">Adobe Illustrator</span>
+          <span class="tag">Adobe InDesign</span>
+          <span class="tag">Adobe Photoshop</span>
+          <span class="tag">Adobe Premiere Pro</span>
+          <span class="tag">Adobe After Effects</span>
+          <span class="tag">Montserrat Font Family</span>
+          <span class="tag">Print Production</span>
+          <span class="tag">Brand Guidelines</span>
+        </div>
+      </div>
+
+      <!-- Case study navigation -->
+      <div class="cs-nav">
+        <a href="index.html#projects" class="cs-nav-card">
+          <div class="cs-nav-dir">← Back</div>
+          <div class="cs-nav-title">All Projects</div>
+          <div class="cs-nav-cat">View full portfolio</div>
+        </a>
+        <a href="case-study-cake-dudes.html" class="cs-nav-card" style="text-align:right">
+          <div class="cs-nav-dir">Next →</div>
+          <div class="cs-nav-title">Cake Dudes</div>
+          <div class="cs-nav-cat">Brand Identity · F&amp;B Chain</div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-logo">BP<span style="color:var(--accent)">.</span></div>
+      <p class="footer-copy">© 2025 Balaji Ponraj · Mississauga, Canada</p>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#projects">Work</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

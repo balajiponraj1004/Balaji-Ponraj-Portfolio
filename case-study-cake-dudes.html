@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cake Dudes — Complete brand identity system designed by Balaji Ponraj. Bold F&B chain branding across logos, menus, packaging, signage, apparel, stickers, social media, and motion graphics.">
+  <meta name="keywords" content="Cake Dudes, Brand Identity, F&B Branding, Graphic Designer, Balaji Ponraj, Restaurant Branding, Logo Design, Food Chain Branding Canada">
+  <title>Cake Dudes — Brand Identity Case Study | Balaji Ponraj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* ── Cake Dudes brand palette ── */
+    :root {
+      --cd-red:    #E8231A;
+      --cd-yellow: #FFCC00;
+      --cd-black:  #0D0D0D;
+      --cd-white:  #FAFAFA;
+      --cd-grey:   #1F1F1F;
+    }
+
+    .cs-hero-bg-cd {
+      background:
+        radial-gradient(ellipse 70% 60% at 65% 35%, rgba(232,35,26,0.25), transparent 65%),
+        radial-gradient(ellipse 50% 70% at 25% 75%, rgba(255,204,0,0.12), transparent 60%),
+        linear-gradient(160deg, #0D0D0D 0%, #1A0000 40%, #2A0A00 100%);
+    }
+
+    .cd-mockup-red    { background: linear-gradient(135deg,#0D0D0D 0%,#5C0A07 30%,#E8231A 65%,#FF6B5E 100%); }
+    .cd-mockup-yellow { background: linear-gradient(135deg,#0D0D0D 0%,#3D3000 30%,#FFCC00 70%,#FFE566 100%); }
+    .cd-mockup-dark   { background: linear-gradient(135deg,#0D0D0D 0%,#1F1F1F 40%,#2D2D2D 100%); }
+    .cd-mockup-split  { background: linear-gradient(135deg,#E8231A 0%,#CC1E16 50%,#FFCC00 100%); }
+
+    .swatch-grid { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+    .swatch { flex:1; min-width:100px; border-radius:var(--r-md); overflow:hidden; border:1px solid var(--border); }
+    .swatch-color { height:80px; }
+    .swatch-info { padding:10px 12px; background:var(--bg-card); }
+    .swatch-name { font-size:12px; font-weight:600; color:var(--ink); }
+    .swatch-hex  { font-size:11px; color:var(--ink-3); font-family:monospace; }
+
+    .type-showcase { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-lg); padding:40px; margin-top:24px; }
+    .type-display  { font-family:var(--font-d); font-size:clamp(36px,5vw,64px); font-weight:800; letter-spacing:-2px; line-height:1.1; margin-bottom:8px; }
+    .type-label    { font-size:12px; color:var(--ink-3); letter-spacing:2px; text-transform:uppercase; margin-bottom:24px; }
+    .type-body-sample { font-size:15px; color:var(--ink-2); line-height:1.8; }
+
+    .deliverable-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(180px,1fr)); gap:12px; margin-top:24px; }
+    .deliverable-item { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-md); padding:16px; display:flex; align-items:center; gap:12px; transition:border-color 0.3s; }
+    .deliverable-item:hover { border-color:var(--border-md); }
+    .deliverable-icon { font-size:22px; flex-shrink:0; }
+    .deliverable-name { font-size:13px; color:var(--ink); font-weight:500; line-height:1.3; }
+
+    .cs-process-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:16px; margin-top:32px; }
+    .cs-process-step { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-md); padding:24px; transition:border-color 0.3s; }
+    .cs-process-step:hover { border-color:var(--cd-red); }
+    .cs-process-num { font-family:var(--font-d); font-size:36px; font-weight:800; color:var(--cd-red); opacity:0.4; line-height:1; margin-bottom:8px; }
+    .cs-process-title { font-family:var(--font-d); font-size:16px; font-weight:700; color:var(--ink); margin-bottom:8px; }
+    .cs-process-desc { font-size:13px; color:var(--ink-2); line-height:1.6; }
+
+    /* Logo version cards */
+    .logo-versions { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; }
+    .logo-card { border-radius:var(--r-md); overflow:hidden; border:1px solid var(--border); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:10px; position:relative; }
+    .logo-card-label { position:absolute; bottom:10px; left:0; right:0; text-align:center; font-size:10px; letter-spacing:2px; text-transform:uppercase; }
+
+    /* Application mockups */
+    .app-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:32px; }
+    .app-item { border-radius:var(--r-md); overflow:hidden; border:1px solid var(--border); aspect-ratio:3/4; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; padding:16px; text-align:center; }
+  </style>
+</head>
+<body>
+
+  <div id="cursor" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Back to portfolio">BP <span></span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#projects">Work</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="assets/BALAJI_PONRAJ_Resume.pdf" target="_blank" class="nav-cta desktop">Download CV</a></li>
+      </ul>
+      <button id="nav-burger" class="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-nav" aria-hidden="true">
+    <ul class="mobile-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#projects">Work</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ══ HERO ════════════════════════════════════════ -->
+  <section class="cs-hero">
+    <div class="cs-hero-bg cs-hero-bg-cd"></div>
+    <div class="hero-grid" style="opacity:0.3" aria-hidden="true"></div>
+
+    <div class="wrap cs-hero-content" style="width:100%">
+      <a href="index.html#projects" class="cs-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back to All Work
+      </a>
+
+      <div class="cs-category">Brand Identity &amp; Marketing System · F&amp;B Chain · Multi-Location</div>
+      <h1 class="cs-title">Cake Dudes</h1>
+      <p class="cs-subtitle">A bold, ownable brand identity for a fast-casual food chain with two locations — covering logo systems, menus, packaging, merchandise, signage, stickers, social media, and motion graphics.</p>
+
+      <div class="cs-meta-strip">
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Client</div>
+          <div class="cs-meta-value">Cake Dudes (Canada &amp; India)</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Category</div>
+          <div class="cs-meta-value">Brand Identity · Print · Digital · Motion</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Scope</div>
+          <div class="cs-meta-value">Multi-Location Brand System</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Locations</div>
+          <div class="cs-meta-value">Canada + Thanjavur, Tamil Nadu</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Tools</div>
+          <div class="cs-meta-value">Illustrator · InDesign · Photoshop · After Effects · CorelDraw</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CASE STUDY BODY ════════════════════════════ -->
+  <div class="cs-body">
+    <div class="wrap">
+
+      <!-- Full-bleed hero visual -->
+      <div class="cs-img-block reveal" style="aspect-ratio:21/9; margin-bottom:80px;">
+        <img class="cs-real-img" src="assets/images/cake-dudes/brand-doc-01.jpg" alt="Cake Dudes complete brand identity document cover" loading="lazy">
+      </div>
+
+      <!-- Overview + Objectives -->
+      <div class="cs-two-col" style="gap:64px; margin-bottom:80px;">
+        <div>
+          <div class="cs-section">
+            <div class="cs-section-label reveal">Overview</div>
+            <h2 class="cs-section-title reveal delay-1">Two Locations.<br>One Bold Brand.</h2>
+            <p class="cs-text reveal delay-2">
+              Cake Dudes is a fast-casual food chain selling burgers, pizzas, and cakes — operating across Canada and Thanjavur, Tamil Nadu. The brand needed to feel bold enough to stop scrollers on social media, polished enough for print and packaging, and flexible enough to work across two culturally distinct markets.
+            </p>
+            <p class="cs-text reveal delay-3" style="margin-top:16px;">
+              The challenge: build an identity that was <strong>fun without being childish</strong>, <strong>premium without being pretentious</strong>, and <strong>recognizable across every touchpoint</strong> from a social post to a delivery box.
+            </p>
+          </div>
+
+          <div class="cs-section" style="margin-top:0">
+            <div class="cs-section-label reveal">The Problem</div>
+            <h2 class="cs-section-title reveal delay-1">No system.<br>No consistency.</h2>
+            <p class="cs-text reveal delay-2">
+              The business had a name and a product, but no cohesive visual identity. Different materials used different fonts, colours, and styles — making it impossible to build brand equity or stand out in a competitive food market.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="cs-section">
+            <div class="cs-section-label reveal">Objectives</div>
+            <h2 class="cs-section-title reveal delay-1">Build bold.<br>Build consistent.</h2>
+            <p class="cs-text reveal delay-2">
+              Create a complete, ownable brand identity system that could be applied consistently across print, digital, packaging, merchandise, and motion — in two countries, by multiple team members, without losing visual integrity.
+            </p>
+          </div>
+
+          <div class="deliverable-grid reveal delay-2">
+            <div class="deliverable-item"><span class="deliverable-icon">🔴</span><span class="deliverable-name">Primary + Secondary Logos</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">⭕</span><span class="deliverable-name">Round Logo / Badge</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">🎨</span><span class="deliverable-name">Brand Guidelines</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">📦</span><span class="deliverable-name">Packaging Design</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">📋</span><span class="deliverable-name">Menu Card System</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">🏷️</span><span class="deliverable-name">Sticker Sheet</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">👕</span><span class="deliverable-name">Merchandise (Cap, T-shirt)</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">🚚</span><span class="deliverable-name">Vehicle / Truck Wrap</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">📱</span><span class="deliverable-name">Social Media Templates</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">🎬</span><span class="deliverable-name">Motion / Video Templates</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">🪧</span><span class="deliverable-name">Standee &amp; Signage</span></div>
+            <div class="deliverable-item"><span class="deliverable-icon">💌</span><span class="deliverable-name">Thank-You Cards</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual System -->
+      <div class="cs-section">
+        <div class="cs-section-label reveal">Visual Identity System</div>
+        <h2 class="cs-section-title reveal delay-1">Bold. Playful. Ownable.</h2>
+        <p class="cs-text reveal delay-2" style="max-width:680px">The identity is built on a high-contrast, high-energy palette. Red and yellow signal energy and appetite — colours proven to drive hunger and brand recall in the food service industry. Black grounds the system with premiumness. Every element is designed to work at any scale, from a 2×2 sticker to a full vehicle wrap.</p>
+
+        <!-- Colour swatches -->
+        <div class="swatch-grid reveal delay-2">
+          <div class="swatch">
+            <div class="swatch-color" style="background:#E8231A;"></div>
+            <div class="swatch-info"><div class="swatch-name">Dude Red</div><div class="swatch-hex">#E8231A</div></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#FFCC00;"></div>
+            <div class="swatch-info"><div class="swatch-name">Party Yellow</div><div class="swatch-hex">#FFCC00</div></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#0D0D0D;"></div>
+            <div class="swatch-info"><div class="swatch-name">Midnight Black</div><div class="swatch-hex">#0D0D0D</div></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#FAFAFA; border:1px solid #ddd;"></div>
+            <div class="swatch-info"><div class="swatch-name">Clean White</div><div class="swatch-hex">#FAFAFA</div></div>
+          </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="type-showcase reveal delay-3">
+          <div class="type-display" style="color:#E8231A;">CAKE DUDES</div>
+          <div class="type-label">Display — Fraunces Variable 800 / All Caps Wordmark</div>
+          <div class="type-body-sample">
+            Montserrat was chosen for its geometric boldness and strong street-food personality — energetic, readable at a glance, and highly versatile across formats. The all-caps lockup ensures maximum impact at any size.
+          </div>
+        </div>
+      </div>
+
+      <!-- Logo version grid -->
+      <div class="cs-section">
+        <div class="cs-section-label reveal">Logo System</div>
+        <h2 class="cs-section-title reveal delay-1">Three versions.<br>Every scenario covered.</h2>
+
+        <div class="logo-versions">
+          <div class="logo-card reveal" style="overflow:hidden;background:#fff;">
+            <img src="assets/images/cake-dudes/logo-red.png" alt="Cake Dudes primary red logo" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:16px;">
+            <div class="logo-card-label" style="color:#333;background:linear-gradient(to top,rgba(255,255,255,0.9),transparent);">Primary — Red</div>
+          </div>
+          <div class="logo-card reveal delay-1" style="overflow:hidden;background:#0D0D0D;">
+            <img src="assets/images/cake-dudes/logo-yellow.png" alt="Cake Dudes secondary yellow logo" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:16px;">
+            <div class="logo-card-label" style="color:rgba(255,255,255,0.6);">Secondary — Yellow</div>
+          </div>
+          <div class="logo-card cd-mockup-dark reveal delay-2" style="overflow:hidden;">
+            <img src="assets/images/cake-dudes/brand-doc-02.jpg" alt="Cake Dudes brand document page 2" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            <div class="logo-card-label" style="color:rgba(255,255,255,0.7);">Brand System Overview</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Application mockups -->
+      <div class="cs-section">
+        <div class="cs-section-label reveal">Brand in Action</div>
+        <h2 class="cs-section-title reveal delay-1">Built for the real world.</h2>
+
+        <!-- Large mockup: Social grid — real images -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">
+          <div class="cs-img-block reveal delay-1" style="aspect-ratio:1;">
+            <img class="cs-real-img" src="assets/images/cake-dudes/burger-combo.png" alt="Cake Dudes burger combo Instagram post" loading="lazy">
+          </div>
+          <div class="cs-img-block reveal delay-2" style="aspect-ratio:1;">
+            <img class="cs-real-img" src="assets/images/cake-dudes/pizza-combo.png" alt="Cake Dudes pizza combo social media post" loading="lazy">
+          </div>
+          <div class="cs-img-block reveal delay-3" style="aspect-ratio:1;">
+            <img class="cs-real-img" src="assets/images/cake-dudes/weekly-special.png" alt="Cake Dudes weekly special promotion" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Application row — real images -->
+        <div class="app-grid">
+          <div class="app-item reveal" style="padding:0;overflow:hidden;border-radius:var(--r-md);">
+            <img src="assets/images/cake-dudes/brand-doc-03.jpg" alt="Cake Dudes brand document page 3" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="app-item reveal delay-1" style="padding:0;overflow:hidden;border-radius:var(--r-md);">
+            <img src="assets/images/cake-dudes/brand-doc-04.jpg" alt="Cake Dudes brand document page 4" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="app-item reveal delay-2" style="padding:0;overflow:hidden;border-radius:var(--r-md);">
+            <img src="assets/images/cake-dudes/cap.jpg" alt="Cake Dudes branded cap merchandise" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="app-item reveal delay-3" style="padding:0;overflow:hidden;border-radius:var(--r-md);">
+            <img src="assets/images/cake-dudes/signage.jpg" alt="Cake Dudes Thanjavur store signage" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Poster system -->
+      <div class="cs-section">
+        <div class="cs-section-label reveal">Poster &amp; Standee System</div>
+        <h2 class="cs-section-title reveal delay-1">Point-of-sale that<br>stops customers cold.</h2>
+        <p class="cs-text reveal delay-2" style="max-width:600px">A modular poster and standee system that allows the team to swap product photography and offers while maintaining complete brand consistency — no design skills required.</p>
+
+        <div class="cs-two-col" style="margin-top:32px;">
+          <div class="cs-img-block reveal" style="aspect-ratio:9/16;">
+            <img class="cs-real-img" src="assets/images/cake-dudes/standee.png" alt="Cake Dudes A1 standee point-of-sale design" loading="lazy">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div class="cs-img-block reveal delay-1" style="flex:1;">
+              <img class="cs-real-img" src="assets/images/cake-dudes/ai-ad-01.png" alt="Cake Dudes AI-guided digital ad creative" loading="lazy">
+            </div>
+            <div class="cs-img-block reveal delay-2" style="flex:1;">
+              <img class="cs-real-img" src="assets/images/cake-dudes/brand-doc-05.jpg" alt="Cake Dudes brand guidelines page 5" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="cs-section">
+        <div class="cs-section-label reveal">Creative Process</div>
+        <h2 class="cs-section-title reveal delay-1">From blank canvas<br>to brand system.</h2>
+
+        <div class="cs-process-grid">
+          <div class="cs-process-step reveal">
+            <div class="cs-process-num">01</div>
+            <div class="cs-process-title">Brand Audit</div>
+            <div class="cs-process-desc">Analysed the competitive F&B landscape in both Canada and Thanjavur. Identified white space for a bold, high-energy identity that would stand out across both markets.</div>
+          </div>
+          <div class="cs-process-step reveal delay-1">
+            <div class="cs-process-num">02</div>
+            <div class="cs-process-title">Logo Design</div>
+            <div class="cs-process-desc">Explored 15+ logo concepts. Refined to three production variants — Primary (Red), Secondary (Yellow), and Round Badge — each optimised for specific applications.</div>
+          </div>
+          <div class="cs-process-step reveal delay-2">
+            <div class="cs-process-num">03</div>
+            <div class="cs-process-title">Pattern Development</div>
+            <div class="cs-process-desc">Created bespoke background patterns (EPS + AI) that scale seamlessly from packaging to signage — adding texture without clutter.</div>
+          </div>
+          <div class="cs-process-step reveal delay-3">
+            <div class="cs-process-num">04</div>
+            <div class="cs-process-title">Collateral Production</div>
+            <div class="cs-process-desc">Designed and produced 12+ touchpoints: menu cards, business cards, stickers, merchandise, standees, social media templates, and a vehicle wrap.</div>
+          </div>
+          <div class="cs-process-step reveal delay-4">
+            <div class="cs-process-num">05</div>
+            <div class="cs-process-title">Motion &amp; Digital</div>
+            <div class="cs-process-desc">Produced Instagram video templates in After Effects, AI-guided digital ad creatives, and a full Facebook banner system for ongoing campaign use.</div>
+          </div>
+          <div class="cs-process-step reveal delay-5">
+            <div class="cs-process-num">06</div>
+            <div class="cs-process-title">Handoff &amp; Guidelines</div>
+            <div class="cs-process-desc">Delivered a comprehensive brand document (InDesign + PDF), all source files (AI, EPS, CDR), font licensing guidance, and a print-ready sticker sheet.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Multi-location adaptation -->
+      <div class="cs-section">
+        <div class="cs-section-label reveal">Multi-Market Adaptation</div>
+        <h2 class="cs-section-title reveal delay-1">One brand.<br>Two markets.</h2>
+        <p class="cs-text reveal delay-2" style="max-width:680px">The Cake Dudes brand was designed with intentional flexibility — the core identity (Dude Red + Party Yellow + Midnight Black) is market-agnostic, while location-specific assets (Thanjavur menu pricing, local social media posts, regional promotions) were customised without breaking the visual system.</p>
+
+        <div class="cs-two-col" style="margin-top:32px;">
+          <div class="cs-outcome-card reveal" style="background:var(--bg-card);">
+            <div style="font-size:24px;margin-bottom:8px;">🇨🇦</div>
+            <div style="font-family:'Fraunces',Georgia,serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px;">Canada Location</div>
+            <div style="font-size:14px;color:var(--ink-2);line-height:1.6;">English-primary assets, CAD pricing, social media posts in English and Tamil, seasonal promotions (Christmas, Diwali), digital-first campaign materials.</div>
+          </div>
+          <div class="cs-outcome-card reveal delay-1" style="background:var(--bg-card);">
+            <div style="font-size:24px;margin-bottom:8px;">🇮🇳</div>
+            <div style="font-family:'Fraunces',Georgia,serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px;">Thanjavur (TNJ) Location</div>
+            <div style="font-size:14px;color:var(--ink-2);line-height:1.6;">Tamil-script adapted assets, INR pricing, local festival promotions (Pongal, Deepavali), standees and signage in regional format sizes, QR-coded menus.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outcomes -->
+      <div class="cs-section">
+        <div class="cs-section-label reveal">Results &amp; Impact</div>
+        <h2 class="cs-section-title reveal delay-1">A brand that<br>earns its keep.</h2>
+
+        <div class="cs-outcome-grid">
+          <div class="cs-outcome-card reveal">
+            <div class="cs-outcome-num">12+</div>
+            <div class="cs-outcome-desc">Brand touchpoints across print, digital, packaging, merchandise, and motion</div>
+          </div>
+          <div class="cs-outcome-card reveal delay-1">
+            <div class="cs-outcome-num">2</div>
+            <div class="cs-outcome-desc">Countries, one coherent brand system with local adaptations for each market</div>
+          </div>
+          <div class="cs-outcome-card reveal delay-2">
+            <div class="cs-outcome-num">100%</div>
+            <div class="cs-outcome-desc">Brand consistency maintained across all collateral from day one of launch</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial -->
+      <div class="cs-testimonial reveal">
+        <p class="cs-quote">
+          "The Cake Dudes identity is everything we wanted — bold, fun, and completely ours. Balaji nailed it from the first concept. The brand works on Instagram, on our packaging, on our caps, everywhere. We get compliments on the look constantly."
+        </p>
+        <div class="cs-quote-author">Cake Dudes Team</div>
+        <div class="cs-quote-role">Food Chain Owner · Canada &amp; Thanjavur, Tamil Nadu</div>
+      </div>
+
+      <!-- Tools -->
+      <div class="cs-section" style="margin-top:60px">
+        <div class="cs-section-label reveal">Tools Used</div>
+        <div class="cs-tools-list reveal delay-1">
+          <span class="tag">Adobe Illustrator</span>
+          <span class="tag">Adobe InDesign</span>
+          <span class="tag">Adobe Photoshop</span>
+          <span class="tag">Adobe After Effects</span>
+          <span class="tag">CorelDRAW</span>
+          <span class="tag">Montserrat Font Family</span>
+          <span class="tag">EPS / AI Vector Production</span>
+          <span class="tag">Print-Ready PDF</span>
+          <span class="tag">Brand Guidelines</span>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="cs-nav">
+        <a href="case-study-manam-canteen.html" class="cs-nav-card">
+          <div class="cs-nav-dir">← Previous</div>
+          <div class="cs-nav-title">Manam Canteen</div>
+          <div class="cs-nav-cat">Brand Identity · Restaurant</div>
+        </a>
+        <a href="index.html#projects" class="cs-nav-card" style="text-align:right">
+          <div class="cs-nav-dir">All Work →</div>
+          <div class="cs-nav-title">Full Portfolio</div>
+          <div class="cs-nav-cat">View all projects</div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-logo">BP<span style="color:var(--accent)">.</span></div>
+      <p class="footer-copy">© 2025 Balaji Ponraj · Mississauga, Canada</p>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#projects">Work</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

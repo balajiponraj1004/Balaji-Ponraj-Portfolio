@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Cake Dudes — Complete brand identity system designed by Balaji Ponraj. Bold F&B chain branding across logos, menus, packaging, signage, apparel, stickers, social media, and motion graphics.">
-  <meta name="keywords" content="Cake Dudes, Brand Identity, F&B Branding, Graphic Designer, Balaji Ponraj, Restaurant Branding, Logo Design, Food Chain Branding Canada">
-  <title>Cake Dudes — Brand Identity Case Study | Balaji Ponraj</title>
+  <meta name="description" content="IQVIA Data Intelligence — Pharmaceutical infographic design system by Balaji Ponraj. 200+ boardroom-ready data visualizations for global healthcare clients across 4+ years.">
+  <meta name="keywords" content="IQVIA, Pharmaceutical Design, Infographic Design, Data Visualization, Healthcare Marketing, Balaji Ponraj, Senior Graphic Designer, Life Sciences Design, Pharma Infographics">
+  <title>IQVIA Data Intelligence — Infographic Design Case Study | Balaji Ponraj</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    /* ── Cake Dudes brand tokens ── */
+    /* ── IQVIA brand tokens ── */
     :root {
-      --cd-red:    #E8231A;
-      --cd-yellow: #FFCC00;
-      --cd-black:  #0D0D0D;
-      --cd-white:  #FAFAFA;
-      --cd-grey:   #1F1F1F;
+      --iq-blue:   #0062B1;
+      --iq-teal:   #00A3A1;
+      --iq-sky:    #4DB8E8;
+      --iq-dark:   #060D1F;
+      --iq-slate:  #0D1B33;
+      --iq-light:  #EEF4FB;
     }
 
-    /* ── Global resets ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--ink); font-family: var(--font-b); overflow-x: hidden; }
@@ -30,11 +30,11 @@
     /* ── Progress bar ── */
     #cs-progress {
       position: fixed; top: 0; left: 0; width: 0%; height: 3px;
-      background: linear-gradient(90deg, var(--cd-red), var(--cd-yellow));
+      background: linear-gradient(90deg, var(--iq-blue), var(--iq-teal));
       z-index: 9999; transition: width 0.1s linear;
     }
 
-    /* ── Fixed dot navigation — right rail ── */
+    /* ── Fixed dot navigation ── */
     .dot-nav {
       position: fixed; right: 28px; top: 50%; transform: translateY(-50%);
       z-index: 500; display: flex; flex-direction: column; gap: 16px; list-style: none;
@@ -56,8 +56,8 @@
       background: rgba(255,255,255,0.2);
       transition: background 0.3s, transform 0.3s;
     }
-    .dot-nav li.active a .dot { background: var(--cd-red); transform: scale(1.7); }
-    .dot-nav li a:hover .dot { background: var(--cd-yellow); }
+    .dot-nav li.active a .dot { background: var(--iq-teal); transform: scale(1.7); }
+    .dot-nav li a:hover .dot { background: var(--iq-sky); }
     @media (max-width: 900px) { .dot-nav { display: none; } }
 
     /* ── Back nav ── */
@@ -71,7 +71,7 @@
     .cs-back:hover { color: #fff; }
     .cs-back:hover svg { transform: translateX(-4px); }
 
-    /* ── HERO — full viewport, Z-pattern ── */
+    /* ── HERO ── */
     .cs-hero {
       position: relative; height: 100svh; min-height: 600px;
       display: flex; align-items: flex-end; overflow: hidden;
@@ -79,26 +79,26 @@
     .cs-hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 70% 60% at 65% 35%, rgba(232,35,26,0.35), transparent 65%),
-        radial-gradient(ellipse 50% 70% at 25% 75%, rgba(255,204,0,0.15), transparent 60%),
-        linear-gradient(160deg, #0D0D0D 0%, #1A0000 40%, #2A0A00 100%);
+        radial-gradient(ellipse 70% 60% at 60% 35%, rgba(0,98,177,0.45), transparent 65%),
+        radial-gradient(ellipse 50% 70% at 20% 75%, rgba(0,163,161,0.2), transparent 60%),
+        linear-gradient(170deg, #060D1F 0%, #0A1628 40%, #0D2040 100%);
     }
     .cs-hero-bg img {
-      width: 100%; height: 100%; object-fit: cover; opacity: 0.3;
+      width: 100%; height: 100%; object-fit: cover; opacity: 0.2;
       mix-blend-mode: luminosity;
     }
     .cs-hero-bg::after {
       content: ''; position: absolute; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.6; pointer-events: none;
+      opacity: 0.5; pointer-events: none;
     }
-    /* PRIMARY OPTICAL AREA — top-left first eye stop */
+    /* PRIMARY OPTICAL AREA — top-left */
     .cs-hero-tag {
       position: absolute;
       top: calc(28px + 56px + 24px);
       left: clamp(24px, 5vw, 80px);
       font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--cd-yellow); opacity: 0;
+      color: var(--iq-teal); opacity: 0;
       animation: fadeSlideDown 0.8s 0.3s forwards;
     }
     .cs-hero-content {
@@ -114,8 +114,7 @@
     }
     .cs-hero-title em {
       font-style: italic; font-weight: 300; display: block;
-      color: transparent;
-      -webkit-text-stroke: 1.5px rgba(232,35,26,0.75);
+      color: transparent; -webkit-text-stroke: 1.5px rgba(0,98,177,0.8);
     }
     .cs-hero-meta {
       display: flex; flex-wrap: wrap; gap: 24px; margin-top: 32px;
@@ -124,7 +123,16 @@
     .cs-hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
     .cs-hero-meta-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
     .cs-hero-meta-val { font-size: 14px; font-weight: 600; color: var(--ink); }
-    /* TERMINAL AREA — bottom-right */
+    /* NDA disclaimer in hero */
+    .cs-hero-nda {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 28px; padding: 10px 16px;
+      background: rgba(0,163,161,0.12); border: 1px solid rgba(0,163,161,0.25);
+      border-radius: 8px; font-size: 12px; color: rgba(255,255,255,0.6);
+      opacity: 0; animation: fadeSlideUp 0.9s 1s forwards;
+    }
+    .cs-hero-nda::before { content: '🔒'; font-size: 13px; }
+    /* TERMINAL AREA */
     .cs-hero-scroll {
       position: absolute; bottom: 36px; right: clamp(24px, 5vw, 80px);
       display: flex; flex-direction: column; align-items: center; gap: 8px;
@@ -134,7 +142,7 @@
     }
     .cs-hero-scroll-line {
       width: 1px; height: 56px;
-      background: linear-gradient(to bottom, transparent, var(--cd-red));
+      background: linear-gradient(to bottom, transparent, var(--iq-blue));
       animation: scrollPulse 2s infinite;
     }
     @keyframes scrollPulse { 0%,100% { opacity:0.4; } 50% { opacity:1; } }
@@ -144,7 +152,7 @@
 
     /* ── STATS BAND ── */
     .cs-stats-band {
-      background: var(--cd-red);
+      background: var(--iq-blue);
       display: grid; grid-template-columns: repeat(4, 1fr);
     }
     .cs-stat-cell {
@@ -154,8 +162,7 @@
     .cs-stat-cell:last-child { border-right: none; }
     .cs-stat-num {
       font-family: var(--font-d); font-size: clamp(36px, 5vw, 60px);
-      font-weight: 900; line-height: 1; letter-spacing: -2px;
-      font-optical-sizing: auto; color: #fff;
+      font-weight: 900; line-height: 1; letter-spacing: -2px; font-optical-sizing: auto; color: #fff;
     }
     .cs-stat-label { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 6px; }
     @media (max-width: 700px) {
@@ -176,20 +183,19 @@
     .stagger-3 { transition-delay: 0.3s; }
     .stagger-4 { transition-delay: 0.4s; }
 
-    /* ── Section wrapper ── */
     .cs-section { padding: clamp(80px, 12vh, 140px) clamp(24px, 5vw, 80px); }
     .cs-section-inner { max-width: 1280px; margin: 0 auto; }
 
     .cs-eyebrow {
       font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--cd-red); font-weight: 700; margin-bottom: 20px;
+      color: var(--iq-teal); font-weight: 700; margin-bottom: 20px;
       display: flex; align-items: center; gap: 12px;
     }
-    .cs-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--cd-red); }
+    .cs-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--iq-teal); }
 
-    /* ── CHALLENGE — dark full-bleed, centered pull quote ── */
+    /* ── CHALLENGE ── */
     .cs-challenge {
-      background: var(--cd-black);
+      background: var(--iq-dark);
       padding: clamp(80px, 12vh, 140px) clamp(24px, 5vw, 80px);
       text-align: center; position: relative; overflow: hidden;
     }
@@ -198,20 +204,19 @@
       transform: translateX(-50%);
       font-family: var(--font-d); font-size: clamp(200px, 30vw, 400px);
       font-weight: 900; font-optical-sizing: auto;
-      color: rgba(232,35,26,0.05); line-height: 1; pointer-events: none; user-select: none;
+      color: rgba(0,98,177,0.06); line-height: 1; pointer-events: none; user-select: none;
     }
     .cs-challenge-eyebrow {
       font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--cd-red); font-weight: 700; margin-bottom: 32px;
+      color: var(--iq-teal); font-weight: 700; margin-bottom: 32px;
     }
-    /* FORCED VISUAL STOP */
     .cs-pull-quote {
       font-family: var(--font-d); font-size: clamp(26px, 3.8vw, 52px);
       font-weight: 300; font-style: italic; font-optical-sizing: auto;
       line-height: 1.25; letter-spacing: -1px;
       color: var(--ink); max-width: 820px; margin: 0 auto 60px;
     }
-    .cs-pull-quote strong { font-style: normal; font-weight: 800; color: var(--cd-yellow); }
+    .cs-pull-quote strong { font-style: normal; font-weight: 800; color: var(--iq-sky); }
     .cs-challenge-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
       max-width: 1000px; margin: 0 auto;
@@ -220,12 +225,12 @@
     .cs-chal-col { background: rgba(255,255,255,0.02); padding: 36px 32px; text-align: left; }
     .cs-chal-col-label {
       font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--cd-red); font-weight: 700; margin-bottom: 16px;
+      color: var(--iq-teal); font-weight: 700; margin-bottom: 16px;
     }
     .cs-chal-col p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; }
     @media (max-width: 700px) { .cs-challenge-grid { grid-template-columns: 1fr; } }
 
-    /* ── BRIEF — 40/60 asymmetric split ── */
+    /* ── BRIEF — 40/60 asymmetric ── */
     .cs-brief-grid {
       display: grid; grid-template-columns: 40fr 60fr; gap: clamp(40px, 5vw, 80px);
       align-items: center;
@@ -235,14 +240,13 @@
       font-family: var(--font-d); font-size: clamp(36px, 5vw, 68px);
       font-weight: 900; line-height: 1.0; letter-spacing: -2px; font-optical-sizing: auto;
     }
-    .cs-brief-h2 em { font-style: italic; font-weight: 300; color: var(--cd-red); }
+    .cs-brief-h2 em { font-style: italic; font-weight: 300; color: var(--iq-teal); }
     .cs-brief-body { font-size: clamp(15px, 1.5vw, 17px); color: var(--ink-2); line-height: 1.8; margin-top: 24px; }
     .cs-brief-image-wrap { position: relative; }
-    .cs-brief-image-wrap img { width: 100%; border-radius: 12px; aspect-ratio: 4/3; object-fit: cover; }
-    /* Floating stat card — secondary focal point */
+    .cs-brief-image-wrap img { width: 100%; border-radius: 12px; aspect-ratio: 4/3; object-fit: cover; object-position: top; }
     .cs-float-card {
       position: absolute; bottom: -28px; left: -28px;
-      background: var(--cd-red); color: #fff;
+      background: var(--iq-blue); color: #fff;
       padding: 20px 28px; border-radius: 12px;
       box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
@@ -253,36 +257,36 @@
     .cs-float-card-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.8; margin-top: 4px; }
     @media (max-width: 900px) { .cs-float-card { position: static; margin-top: 16px; display: inline-block; } }
 
-    /* ── DELIVERABLES STRIP — bold icon grid ── */
-    .cs-deliverables { background: var(--cd-yellow); padding: clamp(48px, 6vw, 80px) clamp(24px, 5vw, 80px); }
-    .cs-deliverables-inner { max-width: 1280px; margin: 0 auto; }
-    .cs-deliverables-label {
+    /* ── SCOPE BAND — deliverables at a glance ── */
+    .cs-scope-band { background: var(--iq-slate); padding: clamp(48px, 6vw, 80px) clamp(24px, 5vw, 80px); }
+    .cs-scope-inner { max-width: 1280px; margin: 0 auto; }
+    .cs-scope-label {
       font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-      color: rgba(0,0,0,0.5); font-weight: 700; margin-bottom: 32px;
+      color: var(--iq-teal); font-weight: 700; margin-bottom: 32px;
       display: flex; align-items: center; gap: 12px;
     }
-    .cs-deliverables-label::before { content: ''; display: block; width: 32px; height: 1px; background: rgba(0,0,0,0.3); }
-    .cs-del-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px;
+    .cs-scope-label::before { content: ''; display: block; width: 32px; height: 1px; background: var(--iq-teal); }
+    .cs-scope-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+    .cs-scope-item {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; padding: 20px 20px;
+      display: flex; flex-direction: column; gap: 8px;
+      transition: border-color 0.25s, background 0.25s;
     }
-    .cs-del-item {
-      background: rgba(0,0,0,0.08); border-radius: 10px; padding: 16px 18px;
-      display: flex; align-items: center; gap: 12px;
-      transition: background 0.2s;
-    }
-    .cs-del-item:hover { background: rgba(0,0,0,0.14); }
-    .cs-del-icon { font-size: 22px; flex-shrink: 0; }
-    .cs-del-name { font-size: 13px; font-weight: 700; color: var(--cd-black); line-height: 1.3; }
+    .cs-scope-item:hover { background: rgba(0,98,177,0.12); border-color: rgba(0,98,177,0.3); }
+    .cs-scope-icon { font-size: 24px; }
+    .cs-scope-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+    .cs-scope-count { font-size: 12px; color: var(--iq-teal); font-weight: 600; }
 
-    /* ── PATTERN INTERRUPT: full-bleed break ── */
+    /* ── PATTERN INTERRUPT ── */
     .cs-break {
       min-height: 40vh; display: flex; align-items: center; justify-content: center;
       position: relative; overflow: hidden; text-align: center;
-      background: var(--cd-red);
+      background: var(--iq-blue);
     }
     .cs-break img {
       position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-      opacity: 0.2; mix-blend-mode: multiply;
+      opacity: 0.15; mix-blend-mode: multiply;
     }
     .cs-break-text {
       position: relative; z-index: 2;
@@ -290,9 +294,9 @@
       font-weight: 900; font-optical-sizing: auto; letter-spacing: -2px;
       color: #fff; line-height: 1.05; padding: clamp(40px, 6vw, 80px);
     }
-    .cs-break-text em { font-style: italic; font-weight: 300; display: block; color: var(--cd-yellow); }
+    .cs-break-text em { font-style: italic; font-weight: 300; display: block; color: var(--iq-sky); }
 
-    /* ── VISUAL SYSTEM — 60/40 split ── */
+    /* ── METHODOLOGY — 60/40 split ── */
     .cs-visual-grid {
       display: grid; grid-template-columns: 60fr 40fr; gap: clamp(40px, 5vw, 80px);
       align-items: start;
@@ -303,35 +307,29 @@
       font-weight: 900; line-height: 1.05; letter-spacing: -2px; font-optical-sizing: auto;
       margin-bottom: 20px;
     }
-    .cs-visual-body { font-size: 15px; color: var(--ink-2); line-height: 1.8; margin-bottom: 32px; }
-    .cs-palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; border-radius: 12px; overflow: hidden; }
-    .cs-swatch { aspect-ratio: 1; position: relative; cursor: pointer; }
-    .cs-swatch:hover .cs-swatch-info { opacity: 1; transform: translateY(0); }
-    .cs-swatch-info {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: rgba(0,0,0,0.75); padding: 8px;
-      font-size: 10px; color: #fff; font-family: monospace;
-      opacity: 0; transform: translateY(4px); transition: all 0.2s;
+    .cs-visual-body { font-size: 15px; color: var(--ink-2); line-height: 1.8; margin-bottom: 24px; }
+
+    /* Methodology steps */
+    .cs-method-steps { display: flex; flex-direction: column; gap: 0; }
+    .cs-method-step {
+      display: flex; gap: 20px; padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
     }
-    .cs-type-specimen {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 16px; padding: clamp(24px, 3vw, 40px); margin-top: 24px;
+    .cs-method-step:last-child { border-bottom: none; }
+    .cs-method-num {
+      font-family: var(--font-d); font-size: 28px; font-weight: 900;
+      font-optical-sizing: auto; color: var(--iq-teal); line-height: 1;
+      flex-shrink: 0; width: 40px; padding-top: 3px;
     }
-    .cs-type-display {
-      font-family: var(--font-d); font-size: clamp(36px, 5vw, 64px);
-      font-weight: 900; letter-spacing: -2px; line-height: 1.05;
-      font-optical-sizing: auto; color: var(--cd-red);
-    }
-    .cs-type-italic {
-      font-family: var(--font-d); font-size: clamp(24px, 3vw, 40px);
-      font-weight: 300; font-style: italic; font-optical-sizing: auto;
-      color: var(--ink-2); margin-bottom: 16px;
-    }
-    .cs-type-body { font-size: 14px; color: var(--ink-3); line-height: 1.7; }
+    .cs-method-title { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .cs-method-desc { font-size: 13px; color: var(--ink-3); line-height: 1.65; }
+
+    /* Right column images */
     .cs-visual-images { display: flex; flex-direction: column; gap: 12px; }
     .cs-visual-images img { width: 100%; border-radius: 10px; object-fit: cover; }
-    .cs-visual-images img:first-child { aspect-ratio: 1/1; }
-    .cs-visual-images img:last-child { aspect-ratio: 16/9; }
+    .cs-visual-images img:first-child { aspect-ratio: 4/3; }
+    .cs-visual-images img:last-child { aspect-ratio: 4/3; }
 
     /* ── PROCESS RAIL ── */
     .cs-process { background: var(--bg-2); }
@@ -340,26 +338,26 @@
       font-weight: 900; line-height: 1.05; letter-spacing: -2px;
       font-optical-sizing: auto; margin-bottom: 60px; text-align: center;
     }
-    .cs-process-h2 em { font-style: italic; font-weight: 300; color: var(--cd-yellow); }
+    .cs-process-h2 em { font-style: italic; font-weight: 300; color: var(--iq-sky); }
     .cs-process-rail {
       display: grid; grid-template-columns: repeat(5, 1fr);
       gap: 0; position: relative;
     }
     .cs-process-rail::before {
       content: ''; position: absolute; top: 28px; left: 5%; right: 5%;
-      height: 1px; background: linear-gradient(90deg, var(--cd-red), var(--cd-yellow), var(--cd-red));
+      height: 1px; background: linear-gradient(90deg, var(--iq-blue), var(--iq-teal), var(--iq-blue));
       z-index: 0;
     }
     .cs-process-step { position: relative; z-index: 1; padding: 0 20px; text-align: center; }
     .cs-process-num-wrap {
       width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 24px;
-      background: var(--bg-2); border: 2px solid var(--cd-red);
+      background: var(--bg-2); border: 2px solid var(--iq-blue);
       display: flex; align-items: center; justify-content: center;
       font-family: var(--font-d); font-size: 22px; font-weight: 900;
-      font-optical-sizing: auto; color: var(--cd-red);
+      font-optical-sizing: auto; color: var(--iq-blue);
       transition: background 0.3s, color 0.3s;
     }
-    .cs-process-step:hover .cs-process-num-wrap { background: var(--cd-red); color: #fff; }
+    .cs-process-step:hover .cs-process-num-wrap { background: var(--iq-blue); color: #fff; }
     .cs-process-title { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: var(--ink); }
     .cs-process-desc { font-size: 13px; color: var(--ink-3); line-height: 1.7; }
     @media (max-width: 900px) {
@@ -368,25 +366,31 @@
     }
     @media (max-width: 600px) { .cs-process-rail { grid-template-columns: 1fr; } }
 
-    /* ── GALLERY — staggered 12-col diagonal scan ── */
+    /* ── GALLERY — staggered 12-col diagonal ── */
     .cs-gallery-header {
-      padding: clamp(60px, 8vh, 100px) clamp(24px, 5vw, 80px) 48px;
+      padding: clamp(60px, 8vh, 100px) clamp(24px, 5vw, 80px) 24px;
       max-width: 1280px; margin: 0 auto;
     }
     .cs-gallery-h2 {
       font-family: var(--font-d); font-size: clamp(32px, 4vw, 56px);
       font-weight: 900; line-height: 1.05; letter-spacing: -2px; font-optical-sizing: auto;
     }
-    .cs-gallery-h2 em { font-style: italic; font-weight: 300; color: var(--cd-red); }
+    .cs-gallery-h2 em { font-style: italic; font-weight: 300; color: var(--iq-teal); }
+    /* NDA notice */
+    .cs-gallery-nda {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; margin-bottom: 40px;
+      padding: 10px 16px; background: rgba(0,163,161,0.08); border: 1px solid rgba(0,163,161,0.2);
+      border-radius: 8px; font-size: 12px; color: rgba(255,255,255,0.55);
+    }
+    .cs-gallery-nda::before { content: '🔒'; }
     .cs-gallery-grid {
       display: grid; grid-template-columns: repeat(12, 1fr);
       grid-template-rows: auto auto; gap: 6px;
       padding: 0 clamp(24px, 5vw, 80px);
     }
-    .cs-gitem { overflow: hidden; border-radius: 8px; }
-    .cs-gitem img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
-    .cs-gitem:hover img { transform: scale(1.04); }
-    /* Staggered positions — diagonal scan path */
+    .cs-gitem { overflow: hidden; border-radius: 8px; background: var(--bg-card); }
+    .cs-gitem img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.6s var(--ease); }
+    .cs-gitem:hover img { transform: scale(1.03); }
     .cs-g1 { grid-column: 1 / 6; grid-row: 1; aspect-ratio: 4/3; }
     .cs-g2 { grid-column: 6 / 13; grid-row: 1; aspect-ratio: 16/9; }
     .cs-g3 { grid-column: 1 / 5; grid-row: 2; aspect-ratio: 3/4; }
@@ -398,33 +402,21 @@
     }
     @media (max-width: 600px) { .cs-gallery-grid { grid-template-columns: 1fr; } }
     .cs-gallery-row2 {
-      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px;
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6px;
       padding: 6px clamp(24px, 5vw, 80px) 0;
       margin-bottom: clamp(60px, 8vh, 100px);
     }
     .cs-gallery-row2 .cs-gitem { aspect-ratio: 4/3; }
-    @media (max-width: 700px) { .cs-gallery-row2 { grid-template-columns: 1fr; } }
-
-    /* ── LOGO SHOWCASE — split bold/italic, brand moment ── */
-    .cs-logo-section {
-      padding: clamp(80px, 12vh, 140px) clamp(24px, 5vw, 80px);
-      background: var(--cd-black);
-    }
-    .cs-logo-inner { max-width: 1280px; margin: 0 auto; }
-    .cs-logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 48px; }
-    .cs-logo-item { border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; }
-    .cs-logo-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
-    .cs-logo-item:hover img { transform: scale(1.04); }
-    @media (max-width: 700px) { .cs-logo-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 700px) { .cs-gallery-row2 { grid-template-columns: 1fr 1fr; } }
 
     /* ── RESULTS ── */
-    .cs-results { background: var(--cd-black); }
+    .cs-results { background: var(--iq-dark); }
     .cs-results-h2 {
       font-family: var(--font-d); font-size: clamp(32px, 4vw, 56px);
       font-weight: 900; line-height: 1.05; letter-spacing: -2px;
       font-optical-sizing: auto; text-align: center; margin-bottom: 60px;
     }
-    .cs-results-h2 em { font-style: italic; font-weight: 300; color: var(--cd-yellow); }
+    .cs-results-h2 em { font-style: italic; font-weight: 300; color: var(--iq-sky); }
     .cs-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; border-radius: 16px; overflow: hidden; }
     .cs-result-card {
       background: rgba(255,255,255,0.03); padding: clamp(32px, 4vw, 56px) clamp(24px, 3vw, 40px);
@@ -432,7 +424,7 @@
     }
     .cs-result-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--cd-red), var(--cd-yellow));
+      background: linear-gradient(90deg, var(--iq-blue), var(--iq-teal));
       transform: scaleX(0); transform-origin: left; transition: transform 0.5s var(--ease);
     }
     .cs-result-card:hover { background: rgba(255,255,255,0.06); }
@@ -440,7 +432,7 @@
     .cs-result-num {
       font-family: var(--font-d); font-size: clamp(52px, 7vw, 88px);
       font-weight: 900; line-height: 1; letter-spacing: -3px; font-optical-sizing: auto;
-      background: linear-gradient(135deg, var(--cd-red), var(--cd-yellow));
+      background: linear-gradient(135deg, var(--iq-blue), var(--iq-teal));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .cs-result-label { font-size: 16px; font-weight: 700; color: var(--ink); margin: 12px 0 8px; }
@@ -449,7 +441,7 @@
 
     /* ── TESTIMONIAL ── */
     .cs-testimonial {
-      background: linear-gradient(135deg, rgba(232,35,26,0.08), rgba(255,204,0,0.04));
+      background: linear-gradient(135deg, rgba(0,98,177,0.08), rgba(0,163,161,0.04));
       text-align: center;
       padding: clamp(80px, 12vh, 140px) clamp(24px, 8vw, 160px);
     }
@@ -461,13 +453,13 @@
     }
     .cs-test-quote::before {
       content: '"'; font-size: 120px; line-height: 0.8;
-      font-style: normal; font-weight: 900; color: var(--cd-red); opacity: 0.3;
+      font-style: normal; font-weight: 900; color: var(--iq-blue); opacity: 0.3;
       display: block; margin-bottom: -20px;
     }
-    .cs-test-author { font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--cd-yellow); margin-top: 32px; }
+    .cs-test-author { font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--iq-teal); margin-top: 32px; }
     .cs-test-role { font-size: 13px; color: var(--ink-3); margin-top: 4px; }
 
-    /* ── NEXT PROJECT — Terminal Area ── */
+    /* ── NEXT PROJECT ── */
     .cs-next {
       display: flex; align-items: center; justify-content: space-between;
       padding: clamp(60px, 8vh, 100px) clamp(24px, 5vw, 80px);
@@ -478,71 +470,68 @@
       font-family: var(--font-d); font-size: clamp(28px, 4vw, 52px);
       font-weight: 900; letter-spacing: -1.5px; font-optical-sizing: auto;
     }
-    .cs-next-title em { font-style: italic; font-weight: 300; color: var(--cd-yellow); }
+    .cs-next-title em { font-style: italic; font-weight: 300; color: var(--iq-sky); }
     .cs-next-arrow {
       display: flex; align-items: center; gap: 16px;
       font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-      color: var(--ink); background: var(--cd-red); padding: 16px 32px;
+      color: #fff; background: var(--iq-blue); padding: 16px 32px;
       border-radius: 100px; transition: transform 0.3s, box-shadow 0.3s; white-space: nowrap;
     }
-    .cs-next-arrow:hover { transform: translateX(6px); box-shadow: 0 8px 32px rgba(232,35,26,0.4); }
+    .cs-next-arrow:hover { transform: translateX(6px); box-shadow: 0 8px 32px rgba(0,98,177,0.4); }
   </style>
 </head>
 <body>
 
-<!-- Progress bar -->
 <div id="cs-progress"></div>
 
-<!-- Back nav -->
 <a href="index.html" class="cs-back">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
   Back
 </a>
 
-<!-- Fixed dot nav — right rail -->
 <ul class="dot-nav" id="dotNav">
-  <li class="active"><a href="#hero" data-label="Hero" data-section="hero"><span class="dot"></span></a></li>
-  <li><a href="#challenge" data-label="Challenge" data-section="challenge"><span class="dot"></span></a></li>
-  <li><a href="#brief" data-label="Brief" data-section="brief"><span class="dot"></span></a></li>
-  <li><a href="#visual" data-label="Visual System" data-section="visual"><span class="dot"></span></a></li>
-  <li><a href="#process" data-label="Process" data-section="process"><span class="dot"></span></a></li>
-  <li><a href="#gallery" data-label="Gallery" data-section="gallery"><span class="dot"></span></a></li>
-  <li><a href="#results" data-label="Results" data-section="results"><span class="dot"></span></a></li>
+  <li class="active"><a href="#hero" data-label="Hero"><span class="dot"></span></a></li>
+  <li><a href="#challenge" data-label="Challenge"><span class="dot"></span></a></li>
+  <li><a href="#brief" data-label="Brief"><span class="dot"></span></a></li>
+  <li><a href="#methodology" data-label="Methodology"><span class="dot"></span></a></li>
+  <li><a href="#process" data-label="Process"><span class="dot"></span></a></li>
+  <li><a href="#gallery" data-label="Gallery"><span class="dot"></span></a></li>
+  <li><a href="#results" data-label="Results"><span class="dot"></span></a></li>
 </ul>
 
 <!-- ══════════════════════════════════════════════
-     HERO — Z-pattern, Primary Optical Area (top-left)
+     HERO — Z-pattern, Primary Optical Area top-left
      ══════════════════════════════════════════════ -->
 <section class="cs-hero" id="hero">
   <div class="cs-hero-bg">
-    <img src="assets/images/cake-dudes/brand-doc-01.jpg" alt="Cake Dudes brand identity">
+    <img src="assets/images/infographics/infographic-1.png" alt="IQVIA pharmaceutical infographic">
   </div>
-  <span class="cs-hero-tag">Brand Identity · F&amp;B Chain · Canada · 2022–Present</span>
+  <span class="cs-hero-tag">Infographics · Data Visualization · Pharma / Life Sciences · 2019–2023</span>
   <div class="cs-hero-content">
     <h1 class="cs-hero-title">
-      Cake<br>
-      <em>Dudes</em>
+      IQVIA<br>
+      <em>Data Intelligence</em>
     </h1>
     <div class="cs-hero-meta">
       <div class="cs-hero-meta-item">
         <span class="cs-hero-meta-label">Role</span>
-        <span class="cs-hero-meta-val">Lead Designer</span>
+        <span class="cs-hero-meta-val">Lead Graphic Designer</span>
       </div>
       <div class="cs-hero-meta-item">
         <span class="cs-hero-meta-label">Scope</span>
-        <span class="cs-hero-meta-val">End-to-End Brand</span>
+        <span class="cs-hero-meta-val">Infographic System</span>
       </div>
       <div class="cs-hero-meta-item">
-        <span class="cs-hero-meta-label">Timeline</span>
-        <span class="cs-hero-meta-val">Ongoing</span>
+        <span class="cs-hero-meta-label">Duration</span>
+        <span class="cs-hero-meta-val">4+ Years</span>
       </div>
       <div class="cs-hero-meta-item">
-        <span class="cs-hero-meta-label">Deliverables</span>
-        <span class="cs-hero-meta-val">100+ Pieces</span>
+        <span class="cs-hero-meta-label">Output</span>
+        <span class="cs-hero-meta-val">200+ Deliverables</span>
       </div>
     </div>
+    <div class="cs-hero-nda">Representative work samples — proprietary client data anonymized per standard NDA practice.</div>
   </div>
-  <!-- TERMINAL AREA — Z-pattern endpoint -->
   <div class="cs-hero-scroll">
     <span>Scroll</span>
     <div class="cs-hero-scroll-line"></div>
@@ -550,56 +539,54 @@
 </section>
 
 <!-- ══════════════════════════════════════════════
-     STATS BAND — horizontal Z-anchor strip
+     STATS BAND — horizontal Z-anchor
      ══════════════════════════════════════════════ -->
 <div class="cs-stats-band">
   <div class="cs-stat-cell reveal stagger-1">
-    <div class="cs-stat-num">100+</div>
-    <div class="cs-stat-label">Deliverables</div>
+    <div class="cs-stat-num">200+</div>
+    <div class="cs-stat-label">Infographics Designed</div>
   </div>
   <div class="cs-stat-cell reveal stagger-2">
-    <div class="cs-stat-num">12+</div>
-    <div class="cs-stat-label">Design Categories</div>
+    <div class="cs-stat-num">4+</div>
+    <div class="cs-stat-label">Years at IQVIA</div>
   </div>
   <div class="cs-stat-cell reveal stagger-3">
-    <div class="cs-stat-num">2</div>
-    <div class="cs-stat-label">Logo Variants</div>
+    <div class="cs-stat-num">95%</div>
+    <div class="cs-stat-label">Client Satisfaction</div>
   </div>
   <div class="cs-stat-cell reveal stagger-4">
-    <div class="cs-stat-num">1</div>
-    <div class="cs-stat-label">Bold Brand Voice</div>
+    <div class="cs-stat-num">15%</div>
+    <div class="cs-stat-label">Efficiency Gain via Scripting</div>
   </div>
 </div>
 
 <!-- ══════════════════════════════════════════════
-     CHALLENGE — centered pull quote
-     FORCED VISUAL STOP — breaks F-pattern to center
+     CHALLENGE — centered pull quote, forced visual stop
      ══════════════════════════════════════════════ -->
 <section class="cs-challenge" id="challenge">
   <div class="cs-challenge-eyebrow reveal">The Challenge</div>
   <p class="cs-pull-quote reveal">
-    Build a brand loud enough to <strong>own the street</strong> —
-    without losing the warmth that keeps people coming back.
+    Translate the world's most <strong>complex pharmaceutical data</strong>
+    into visuals that make a boardroom stop, look, and decide.
   </p>
   <div class="cs-challenge-grid">
     <div class="cs-chal-col reveal stagger-1">
-      <div class="cs-chal-col-label">Problem</div>
-      <p>A fast-growing F&B chain needed a brand identity that could punch above its weight — bold enough to compete on street-level visibility, smart enough to work across every touchpoint.</p>
+      <div class="cs-chal-col-label">The Context</div>
+      <p>IQVIA is the world's largest provider of pharma data analytics. Their clients — global drug companies, health systems, regulators — make billion-dollar decisions from data. Design has to earn its place at that table.</p>
     </div>
     <div class="cs-chal-col reveal stagger-2">
-      <div class="cs-chal-col-label">Insight</div>
-      <p>The "Dudes" name signals personality and irreverence. The brand needed to lean into that energy — confident, playful, and unapologetically bold — with red and yellow as its battle colours.</p>
+      <div class="cs-chal-col-label">The Problem</div>
+      <p>Dense datasets, multi-market comparisons, clinical trial timelines, and market access reports arrived as raw numbers. The ask: make these compelling, scannable, and persuasive without sacrificing accuracy or compliance.</p>
     </div>
     <div class="cs-chal-col reveal stagger-3">
-      <div class="cs-chal-col-label">Solution</div>
-      <p>A high-contrast red-and-yellow system built for maximum visual impact: bold mark, tight typography, and an adaptable design language that scales from sticker to signage to social reel.</p>
+      <div class="cs-chal-col-label">The Constraint</div>
+      <p>Strict brand compliance, tight turnaround (48–72hr standard), zero tolerance for data error, and multi-format deliverables — PPT, PDF, digital, and print — all required from a single source file system.</p>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════════
-     BRIEF — 40/60 asymmetric split
-     Left: text (40%) / Right: image + floating stat (60%)
+     BRIEF — 40/60 split, floating stat card
      ══════════════════════════════════════════════ -->
 <section class="cs-section" id="brief">
   <div class="cs-section-inner">
@@ -607,21 +594,24 @@
       <div class="reveal-left">
         <div class="cs-eyebrow">The Brief</div>
         <h2 class="cs-brief-h2">
-          From logo to<br><em>everywhere</em>
+          Pharma data made<br><em>visually decisive</em>
         </h2>
         <p class="cs-brief-body">
-          The brief was total: build an identity system that could handle a menu rollout, a merchandise line, exterior signage, social media campaigns, AI-generated advertising, and motion graphics — all cohesively and at speed.
+          As Lead Graphic Designer, I owned the visual translation of pharmaceutical market intelligence across IQVIA's full suite of client deliverables: infographics, data sheets, white papers, event presentations, and digital reports.
         </p>
         <p class="cs-brief-body" style="margin-top:16px;">
-          The system had to be modular enough for a small team to execute day-to-day without losing brand integrity. Every template, every colour rule, every typography decision was made with that scalability in mind.
+          Over four years I built and maintained a scalable infographic design system — standardized templates, reusable data visualization components, and brand-locked style rules — that allowed a team of designers to produce consistent, high-quality output at speed.
+        </p>
+        <p class="cs-brief-body" style="margin-top:16px;">
+          I also introduced InDesign scripting (ExtendScript/JSX) to automate repetitive production tasks, reducing average turnaround time by 15% across the team.
         </p>
       </div>
       <div class="reveal-right">
         <div class="cs-brief-image-wrap">
-          <img src="assets/images/cake-dudes/brand-doc-02.jpg" alt="Cake Dudes brand documentation">
+          <img src="assets/images/infographics/infographic-2.png" alt="IQVIA data intelligence infographic">
           <div class="cs-float-card">
-            <div class="cs-float-card-num">12+</div>
-            <div class="cs-float-card-label">Design Categories</div>
+            <div class="cs-float-card-num">200+</div>
+            <div class="cs-float-card-label">Infographics Delivered</div>
           </div>
         </div>
       </div>
@@ -630,181 +620,190 @@
 </section>
 
 <!-- ══════════════════════════════════════════════
-     DELIVERABLES STRIP — yellow band, bold icon grid
-     High contrast interrupts scroll — eye snaps
+     SCOPE BAND — deliverable categories
      ══════════════════════════════════════════════ -->
-<div class="cs-deliverables">
-  <div class="cs-deliverables-inner">
-    <div class="cs-deliverables-label reveal">What we built</div>
-    <div class="cs-del-grid">
-      <div class="cs-del-item reveal stagger-1"><span class="cs-del-icon">🔤</span><span class="cs-del-name">Logo System</span></div>
-      <div class="cs-del-item reveal stagger-1"><span class="cs-del-icon">🍔</span><span class="cs-del-name">Menu Design</span></div>
-      <div class="cs-del-item reveal stagger-2"><span class="cs-del-icon">📦</span><span class="cs-del-name">Packaging</span></div>
-      <div class="cs-del-item reveal stagger-2"><span class="cs-del-icon">🪧</span><span class="cs-del-name">Signage</span></div>
-      <div class="cs-del-item reveal stagger-3"><span class="cs-del-icon">👕</span><span class="cs-del-name">Apparel</span></div>
-      <div class="cs-del-item reveal stagger-3"><span class="cs-del-icon">🎪</span><span class="cs-del-name">Stickers</span></div>
-      <div class="cs-del-item reveal stagger-4"><span class="cs-del-icon">📱</span><span class="cs-del-name">Social Media</span></div>
-      <div class="cs-del-item reveal stagger-4"><span class="cs-del-icon">🤖</span><span class="cs-del-name">AI Advertising</span></div>
-      <div class="cs-del-item reveal" style="transition-delay:0.5s"><span class="cs-del-icon">🎬</span><span class="cs-del-name">Motion Graphics</span></div>
-      <div class="cs-del-item reveal" style="transition-delay:0.5s"><span class="cs-del-icon">☕</span><span class="cs-del-name">Merchandise</span></div>
-      <div class="cs-del-item reveal" style="transition-delay:0.6s"><span class="cs-del-icon">🍕</span><span class="cs-del-name">Combo Campaigns</span></div>
-      <div class="cs-del-item reveal" style="transition-delay:0.6s"><span class="cs-del-icon">📋</span><span class="cs-del-name">Brand Guidelines</span></div>
+<div class="cs-scope-band">
+  <div class="cs-scope-inner">
+    <div class="cs-scope-label reveal">Deliverable Scope</div>
+    <div class="cs-scope-grid">
+      <div class="cs-scope-item reveal stagger-1">
+        <span class="cs-scope-icon">📊</span>
+        <span class="cs-scope-name">Data Infographics</span>
+        <span class="cs-scope-count">100+ pieces</span>
+      </div>
+      <div class="cs-scope-item reveal stagger-1">
+        <span class="cs-scope-icon">📄</span>
+        <span class="cs-scope-name">White Papers</span>
+        <span class="cs-scope-count">Multi-format</span>
+      </div>
+      <div class="cs-scope-item reveal stagger-2">
+        <span class="cs-scope-icon">🖥️</span>
+        <span class="cs-scope-name">Virtual Event Design</span>
+        <span class="cs-scope-count">ON24 · Cvent</span>
+      </div>
+      <div class="cs-scope-item reveal stagger-2">
+        <span class="cs-scope-icon">📑</span>
+        <span class="cs-scope-name">Brochures &amp; Factsheets</span>
+        <span class="cs-scope-count">Print + Digital</span>
+      </div>
+      <div class="cs-scope-item reveal stagger-3">
+        <span class="cs-scope-icon">📈</span>
+        <span class="cs-scope-name">Executive Presentations</span>
+        <span class="cs-scope-count">PPT + PDF</span>
+      </div>
+      <div class="cs-scope-item reveal stagger-3">
+        <span class="cs-scope-icon">⚙️</span>
+        <span class="cs-scope-name">InDesign Scripting</span>
+        <span class="cs-scope-count">15% efficiency gain</span>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- ══════════════════════════════════════════════
-     PATTERN INTERRUPT: full-bleed break
-     Hard reset — new focal point after yellow band
+     PATTERN INTERRUPT — full-bleed break
      ══════════════════════════════════════════════ -->
 <div class="cs-break">
-  <img src="assets/images/cake-dudes/brand-doc-03.jpg" alt="Cake Dudes brand in action">
+  <img src="assets/images/infographics/infographic-4.png" alt="IQVIA infographic">
   <div class="cs-break-text reveal">
-    Loud by design.<br><em>Precise by intent.</em>
+    Data doesn't speak.<br><em>Design makes it heard.</em>
   </div>
 </div>
 
 <!-- ══════════════════════════════════════════════
-     VISUAL SYSTEM — 60/40 split
-     Left: palette + type / Right: image evidence
+     METHODOLOGY — 60/40 split
+     Left: design method / Right: sample visuals
      ══════════════════════════════════════════════ -->
-<section class="cs-section" id="visual">
+<section class="cs-section" id="methodology">
   <div class="cs-section-inner">
     <div class="cs-visual-grid">
       <div class="reveal-left">
-        <div class="cs-eyebrow">Visual System</div>
-        <h2 class="cs-visual-h2">Red, yellow,<br>and maximum<br>contrast.</h2>
-        <p class="cs-visual-body">The palette is a direct provocation — two of the most attention-grabbing colours in visual psychology, paired with a deep black to ground them. High contrast isn't a stylistic choice here; it's the product promise made visible.</p>
-
-        <div class="cs-palette">
-          <div class="cs-swatch">
-            <div style="background:#E8231A; height:80px;"></div>
-            <div class="cs-swatch-info">#E8231A<br>Red</div>
+        <div class="cs-eyebrow">Design Methodology</div>
+        <h2 class="cs-visual-h2">Structure first.<br>Story second.<br>Colour last.</h2>
+        <p class="cs-visual-body">Every infographic at IQVIA followed a rigorous methodology — not a template. The discipline came from understanding that pharmaceutical audiences are expert readers who lose trust the moment design overshadows data.</p>
+        <div class="cs-method-steps">
+          <div class="cs-method-step reveal stagger-1">
+            <div class="cs-method-num">01</div>
+            <div>
+              <div class="cs-method-title">Data Audit</div>
+              <div class="cs-method-desc">Interrogate the dataset. Identify the single most important number or trend. Everything else is support.</div>
+            </div>
           </div>
-          <div class="cs-swatch">
-            <div style="background:#FFCC00; height:80px;"></div>
-            <div class="cs-swatch-info">#FFCC00<br>Yellow</div>
+          <div class="cs-method-step reveal stagger-2">
+            <div class="cs-method-num">02</div>
+            <div>
+              <div class="cs-method-title">Hierarchy Mapping</div>
+              <div class="cs-method-desc">Map data into visual hierarchy: headline stat → supporting metrics → context → source. Never violate reading order.</div>
+            </div>
           </div>
-          <div class="cs-swatch">
-            <div style="background:#0D0D0D; height:80px;"></div>
-            <div class="cs-swatch-info">#0D0D0D<br>Black</div>
+          <div class="cs-method-step reveal stagger-3">
+            <div class="cs-method-num">03</div>
+            <div>
+              <div class="cs-method-title">Chart Selection</div>
+              <div class="cs-method-desc">Match the chart type to the data story — never decoration. Bar for comparison, line for trend, scatter for correlation, proportional area for scale.</div>
+            </div>
           </div>
-          <div class="cs-swatch">
-            <div style="background:#FAFAFA; height:80px;"></div>
-            <div class="cs-swatch-info">#FAFAFA<br>White</div>
+          <div class="cs-method-step reveal stagger-4">
+            <div class="cs-method-num">04</div>
+            <div>
+              <div class="cs-method-title">Brand Compliance</div>
+              <div class="cs-method-desc">IQVIA blue/teal system applied with strict color budget: primary, secondary, accent only. No decorative color. Visual clarity over brand expression.</div>
+            </div>
           </div>
-        </div>
-
-        <div class="cs-type-specimen">
-          <div class="cs-type-display">Cake Dudes</div>
-          <div class="cs-type-italic">Boldly made. Boldly served.</div>
-          <div class="cs-type-body">The brand's typographic voice is deliberately loud — heavy weight, tight tracking, maximum impact. Display headlines use Fraunces Black (900) for authority; body copy uses Plus Jakarta Sans for legibility at any size.</div>
+          <div class="cs-method-step reveal" style="transition-delay:0.5s;">
+            <div class="cs-method-num">05</div>
+            <div>
+              <div class="cs-method-title">Multi-format Output</div>
+              <div class="cs-method-desc">Single source file exports to PPT slide, A4 PDF, digital social cut-down, and web asset — with zero manual rework.</div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="cs-visual-images reveal-right">
-        <img src="assets/images/cake-dudes/logo-red.png" alt="Cake Dudes red logo">
-        <img src="assets/images/cake-dudes/logo-yellow.png" alt="Cake Dudes yellow logo">
+        <img src="assets/images/infographics/infographic-5.png" alt="IQVIA data visualization sample">
+        <img src="assets/images/infographics/infographic-6.png" alt="IQVIA pharma market infographic">
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════════
-     PROCESS — horizontal numbered rail
-     Left → right eye path enforced by connecting line
+     PROCESS RAIL — left → right eye path
      ══════════════════════════════════════════════ -->
 <section class="cs-section cs-process" id="process">
   <div class="cs-section-inner">
-    <h2 class="cs-process-h2 reveal">The <em>Process</em></h2>
+    <h2 class="cs-process-h2 reveal">The <em>Production Process</em></h2>
     <div class="cs-process-rail">
       <div class="cs-process-step reveal stagger-1">
         <div class="cs-process-num-wrap">01</div>
-        <div class="cs-process-title">Brand Audit</div>
-        <div class="cs-process-desc">Mapping the competitive landscape, analysing successful F&B chains, and identifying the white space for a bold, personality-led brand.</div>
+        <div class="cs-process-title">Brief Intake</div>
+        <div class="cs-process-desc">Receive raw data, client brief, and format requirements. Define the single key insight that drives the layout.</div>
       </div>
       <div class="cs-process-step reveal stagger-2">
         <div class="cs-process-num-wrap">02</div>
-        <div class="cs-process-title">Identity Design</div>
-        <div class="cs-process-desc">Developing the logo system, colour language, and core typographic voice. Red-and-yellow chosen for maximum street-level visibility.</div>
+        <div class="cs-process-title">Wireframe</div>
+        <div class="cs-process-desc">Sketch the information architecture. Establish hierarchy, grid, and white space before any design decisions.</div>
       </div>
       <div class="cs-process-step reveal stagger-3">
         <div class="cs-process-num-wrap">03</div>
-        <div class="cs-process-title">System Build</div>
-        <div class="cs-process-desc">Creating modular templates, brand guidelines, and an extensible design system that any team member could operate with confidence.</div>
+        <div class="cs-process-title">Design</div>
+        <div class="cs-process-desc">Build in Illustrator or InDesign using the live component library. Charts built as editable vectors — no screenshots.</div>
       </div>
       <div class="cs-process-step reveal stagger-4">
         <div class="cs-process-num-wrap">04</div>
-        <div class="cs-process-title">Execution</div>
-        <div class="cs-process-desc">Rolling out across every physical and digital touchpoint: packaging, signage, apparel, menus, social templates, and motion graphics.</div>
+        <div class="cs-process-title">QA Review</div>
+        <div class="cs-process-desc">Data accuracy check against source, brand compliance audit, accessibility check (contrast ratios), and copy proofread.</div>
       </div>
       <div class="cs-process-step reveal" style="transition-delay:0.5s;">
         <div class="cs-process-num-wrap">05</div>
-        <div class="cs-process-title">Evolve</div>
-        <div class="cs-process-desc">Ongoing content creation, new product launches, seasonal promotions, and AI-powered advertising campaigns keeping the brand fresh.</div>
+        <div class="cs-process-title">Multi-format Export</div>
+        <div class="cs-process-desc">Automated export via InDesign scripting to all required formats. 48–72hr standard turnaround maintained across 4 years.</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════════
-     GALLERY — staggered diagonal scan path
-     Large-left → wide-right → 3-column sweep
+     GALLERY — 9 infographics, staggered diagonal
      ══════════════════════════════════════════════ -->
 <section id="gallery">
   <div class="cs-gallery-header">
-    <div class="cs-eyebrow reveal">Work Gallery</div>
-    <h2 class="cs-gallery-h2 reveal">Bold in every<br><em>medium.</em></h2>
+    <div class="cs-eyebrow reveal">Work Samples</div>
+    <h2 class="cs-gallery-h2 reveal">200+ infographics.<br><em>Nine samples.</em></h2>
+    <div class="cs-gallery-nda reveal">Representative samples — proprietary data anonymized. Style, structure, and system fidelity reflect actual IQVIA deliverables.</div>
   </div>
 
   <div class="cs-gallery-grid">
     <div class="cs-gitem cs-g1 reveal stagger-1">
-      <img src="assets/images/cake-dudes/brand-doc-04.jpg" alt="Cake Dudes brand application">
+      <img src="assets/images/infographics/infographic-7.png" alt="Pharmaceutical market data infographic">
     </div>
     <div class="cs-gitem cs-g2 reveal stagger-2">
-      <img src="assets/images/cake-dudes/brand-doc-05.jpg" alt="Cake Dudes brand identity">
+      <img src="assets/images/infographics/infographic-8.png" alt="Healthcare data visualization">
     </div>
     <div class="cs-gitem cs-g3 reveal stagger-2">
-      <img src="assets/images/cake-dudes/burger-combo.png" alt="Burger combo design">
+      <img src="assets/images/infographics/infographic-3.png" alt="Life sciences infographic">
     </div>
     <div class="cs-gitem cs-g4 reveal stagger-3">
-      <img src="assets/images/cake-dudes/pizza-combo.png" alt="Pizza combo campaign">
+      <img src="assets/images/infographics/infographic-9.png" alt="Pharma analytics visual">
     </div>
     <div class="cs-gitem cs-g5 reveal stagger-4">
-      <img src="assets/images/cake-dudes/weekly-special.png" alt="Weekly special post">
+      <img src="assets/images/infographics/infographic-1.png" alt="Clinical data infographic">
     </div>
   </div>
 
   <div class="cs-gallery-row2">
     <div class="cs-gitem reveal stagger-1">
-      <img src="assets/images/cake-dudes/standee.png" alt="Cake Dudes standee design">
+      <img src="assets/images/infographics/infographic-2.png" alt="Market intelligence visualization">
     </div>
     <div class="cs-gitem reveal stagger-2">
-      <img src="assets/images/cake-dudes/ai-ad-01.png" alt="AI-generated advertising">
+      <img src="assets/images/infographics/infographic-4.png" alt="Data driven pharmaceutical insight">
     </div>
     <div class="cs-gitem reveal stagger-3">
-      <img src="assets/images/cake-dudes/signage.jpg" alt="Restaurant signage">
+      <img src="assets/images/infographics/infographic-5.png" alt="Global health data chart">
     </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════
-     LOGO SHOWCASE — brand mark close-up
-     High visual weight moment before results
-     ══════════════════════════════════════════════ -->
-<section class="cs-logo-section">
-  <div class="cs-logo-inner">
-    <div class="cs-eyebrow reveal" style="--cd-red: #E8231A;">Brand Mark</div>
-    <h2 style="font-family:var(--font-d); font-size:clamp(32px,4vw,56px); font-weight:900; letter-spacing:-2px; font-optical-sizing:auto;" class="reveal">
-      Two logos.<br><span style="font-style:italic; font-weight:300; color:var(--cd-yellow);">One voice.</span>
-    </h2>
-    <div class="cs-logo-grid">
-      <div class="cs-logo-item reveal stagger-1">
-        <img src="assets/images/cake-dudes/cap.jpg" alt="Cake Dudes branded cap">
-      </div>
-      <div class="cs-logo-item reveal stagger-2">
-        <img src="assets/images/cake-dudes/cup.jpg" alt="Cake Dudes branded cup">
-      </div>
+    <div class="cs-gitem reveal stagger-4">
+      <img src="assets/images/infographics/infographic-6.png" alt="Pharma performance metrics">
     </div>
   </div>
 </section>
@@ -815,23 +814,23 @@
 <section class="cs-section cs-results" id="results">
   <div class="cs-section-inner">
     <h2 class="cs-results-h2 reveal">
-      A brand that<br><em>owns the room.</em>
+      Four years.<br><em>Measurable impact.</em>
     </h2>
     <div class="cs-results-grid">
       <div class="cs-result-card reveal stagger-1">
-        <div class="cs-result-num">100+</div>
-        <div class="cs-result-label">Brand Assets Created</div>
-        <div class="cs-result-desc">From the first logo sketch to a full brand ecosystem — every piece designed to work independently and cohesively as part of the wider system.</div>
+        <div class="cs-result-num">200+</div>
+        <div class="cs-result-label">Infographics Delivered</div>
+        <div class="cs-result-desc">Across pharma, oncology, real-world evidence, market access, and commercial analytics practices — all within IQVIA brand standards and 48–72hr turnaround.</div>
       </div>
       <div class="cs-result-card reveal stagger-2">
-        <div class="cs-result-num">12+</div>
-        <div class="cs-result-label">Design Verticals</div>
-        <div class="cs-result-desc">Packaging, apparel, signage, social media, motion, AI advertising, merchandise — one brand system that speaks fluently across every medium.</div>
+        <div class="cs-result-num">15%</div>
+        <div class="cs-result-label">Efficiency Improvement</div>
+        <div class="cs-result-desc">Achieved through InDesign scripting automation, reusable component libraries, and standardized template systems introduced and maintained across the design team.</div>
       </div>
       <div class="cs-result-card reveal stagger-3">
-        <div class="cs-result-num">∞</div>
-        <div class="cs-result-label">Scalability</div>
-        <div class="cs-result-desc">A modular system designed for a growing chain — new products, new locations, new campaigns, all executable without breaking brand integrity.</div>
+        <div class="cs-result-num">95%</div>
+        <div class="cs-result-label">Client Satisfaction Rate</div>
+        <div class="cs-result-desc">Maintained across 4+ years and 200+ deliverables — with zero critical revision cycles on 80% of all projects. Repeat work on every major account.</div>
       </div>
     </div>
   </div>
@@ -839,29 +838,27 @@
 
 <!-- ══════════════════════════════════════════════
      TESTIMONIAL — full-width Fraunces italic
-     FORCED VISUAL STOP — largest text block
      ══════════════════════════════════════════════ -->
 <section class="cs-testimonial">
-  <div class="cs-eyebrow" style="justify-content:center; margin-bottom:0;">Client Voice</div>
+  <div class="cs-eyebrow" style="justify-content:center; margin-bottom:0; --iq-teal:#00A3A1;">What the work demanded</div>
   <blockquote class="cs-test-quote reveal">
-    Balaji understood the energy we wanted from day one. He turned "bold and fun"
-    into a proper design system that actually works in the real world.
+    The pharma boardroom has no patience for design that decorates instead of clarifies.
+    Every infographic had to earn its place — by making a decision easier to make.
   </blockquote>
-  <div class="cs-test-author reveal">Cake Dudes</div>
-  <div class="cs-test-role reveal">F&B Brand, Canada</div>
+  <div class="cs-test-author reveal">Balaji Ponraj</div>
+  <div class="cs-test-role reveal">Lead Graphic Designer · IQVIA · 2019–2023</div>
 </section>
 
 <!-- ══════════════════════════════════════════════
      NEXT PROJECT — Terminal Area CTA
-     Bottom-right: Z-pattern final stop
      ══════════════════════════════════════════════ -->
 <div class="cs-next">
   <div>
-    <div class="cs-next-label">Back to Portfolio</div>
-    <h2 class="cs-next-title">All <em>Projects</em></h2>
+    <div class="cs-next-label">Next Case Study</div>
+    <h2 class="cs-next-title">Manam Canteen<br><em>Brand Identity</em></h2>
   </div>
-  <a href="index.html#projects" class="cs-next-arrow">
-    View All Work
+  <a href="case-study-manam-canteen.html" class="cs-next-arrow">
+    View Case Study
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
   </a>
 </div>

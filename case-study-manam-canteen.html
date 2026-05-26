@@ -11,393 +11,914 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    /* ── Manam Canteen brand palette ── */
+    /* ── Manam brand tokens ── */
     :root {
-      --brand-primary:   #C8511A;
-      --brand-secondary: #E8A44A;
-      --brand-dark:      #1C0A03;
-      --brand-cream:     #FBF5EC;
-      --brand-earthy:    #8B5E3C;
+      --m-fire:  #C8511A;
+      --m-gold:  #E8A44A;
+      --m-dark:  #110601;
+      --m-cream: #FBF5EC;
+      --m-earth: #8B5E3C;
     }
-    .cs-hero-bg-manam {
+
+    /* ── Global case study resets ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--font-b); overflow-x: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Progress bar ── */
+    #cs-progress {
+      position: fixed; top: 0; left: 0; width: 0%; height: 3px;
+      background: linear-gradient(90deg, var(--m-fire), var(--m-gold));
+      z-index: 9999; transition: width 0.1s linear;
+    }
+
+    /* ── Fixed dot navigation (right rail — guides eye down) ── */
+    .dot-nav {
+      position: fixed; right: 28px; top: 50%; transform: translateY(-50%);
+      z-index: 500; display: flex; flex-direction: column; gap: 16px;
+      list-style: none;
+    }
+    .dot-nav li a {
+      display: flex; align-items: center; justify-content: flex-end; gap: 10px;
+      cursor: pointer;
+    }
+    .dot-nav li a::before {
+      content: attr(data-label);
+      font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); opacity: 0;
+      transition: opacity 0.3s, transform 0.3s; transform: translateX(4px);
+      font-family: var(--font-b); font-weight: 600; white-space: nowrap;
+    }
+    .dot-nav li a:hover::before,
+    .dot-nav li.active a::before { opacity: 1; transform: translateX(0); }
+    .dot-nav li a .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      transition: background 0.3s, transform 0.3s, width 0.3s;
+    }
+    .dot-nav li.active a .dot { background: var(--m-fire); transform: scale(1.7); }
+    .dot-nav li a:hover .dot { background: var(--m-gold); }
+    @media (max-width: 900px) { .dot-nav { display: none; } }
+
+    /* ── Back navigation ── */
+    .cs-back {
+      position: fixed; top: 28px; left: clamp(20px, 4vw, 60px);
+      z-index: 600; display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255,255,255,0.7); transition: color 0.3s;
+    }
+    .cs-back svg { transition: transform 0.3s; }
+    .cs-back:hover { color: #fff; }
+    .cs-back:hover svg { transform: translateX(-4px); }
+
+    /* ── SECTION 1: HERO — full viewport, Z-pattern start ── */
+    .cs-hero {
+      position: relative; height: 100svh; min-height: 600px;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .cs-hero-img {
+      position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(200,81,26,0.22), transparent 70%),
-        radial-gradient(ellipse 50% 80% at 20% 80%, rgba(140,94,60,0.15), transparent 60%),
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(200,81,26,0.30), transparent 70%),
+        radial-gradient(ellipse 50% 80% at 20% 80%, rgba(140,94,60,0.18), transparent 60%),
         linear-gradient(170deg, #0A0200 0%, #1C0A03 40%, #2E1205 100%);
     }
-    .manam-mockup-1 { background: linear-gradient(135deg,#1C0A03 0%,#6B2E0F 30%,#C8511A 60%,#E8A44A 100%); }
-    .manam-mockup-2 { background: linear-gradient(135deg,#FBF5EC 0%,#E8D5B0 50%,#C8A06A 100%); }
-    .manam-mockup-3 { background: linear-gradient(135deg,#1C0A03 0%,#3D1A08 40%,#8B5E3C 100%); }
-    .manam-mockup-4 { background: linear-gradient(180deg,#C8511A 0%,#E8A44A 100%); }
-    .manam-accent { color: var(--brand-primary); }
+    .cs-hero-img img {
+      width: 100%; height: 100%; object-fit: cover; opacity: 0.35;
+      mix-blend-mode: luminosity;
+    }
+    /* Grain overlay */
+    .cs-hero-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.6; pointer-events: none;
+    }
+    /* PRIMARY OPTICAL AREA — top-left anchor, first eye landing */
+    .cs-hero-tag {
+      position: absolute;
+      top: calc(28px + 56px + 24px); /* below back nav */
+      left: clamp(24px, 5vw, 80px);
+      font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--m-gold); opacity: 0;
+      animation: fadeSlideDown 0.8s 0.3s forwards;
+    }
+    .cs-hero-content {
+      position: relative; z-index: 2;
+      padding: clamp(48px, 8vh, 100px) clamp(24px, 5vw, 80px);
+      max-width: 900px;
+    }
+    .cs-hero-title {
+      font-family: var(--font-d); font-size: clamp(52px, 9vw, 120px);
+      font-weight: 900; line-height: 0.92; letter-spacing: -3px;
+      font-optical-sizing: auto; opacity: 0;
+      animation: fadeSlideUp 0.9s 0.5s forwards;
+    }
+    .cs-hero-title em {
+      font-style: italic; font-weight: 300; display: block;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(200,81,26,0.7);
+    }
+    .cs-hero-meta {
+      display: flex; flex-wrap: wrap; gap: 24px; margin-top: 32px;
+      opacity: 0; animation: fadeSlideUp 0.9s 0.8s forwards;
+    }
+    .cs-hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .cs-hero-meta-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .cs-hero-meta-val { font-size: 14px; font-weight: 600; color: var(--ink); }
+    /* TERMINAL AREA — bottom-right, Z-pattern end */
+    .cs-hero-scroll {
+      position: absolute; bottom: 36px; right: clamp(24px, 5vw, 80px);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); z-index: 2;
+      animation: fadeIn 1s 1.2s both;
+    }
+    .cs-hero-scroll-line {
+      width: 1px; height: 56px;
+      background: linear-gradient(to bottom, transparent, var(--m-fire));
+      animation: scrollPulse 2s infinite;
+    }
+    @keyframes scrollPulse { 0%,100% { opacity:0.4; } 50% { opacity:1; } }
+    @keyframes fadeSlideUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeSlideDown { from { opacity:0; transform:translateY(-12px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
-    /* Colour swatches */
-    .swatch-grid { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
-    .swatch {
-      flex:1; min-width:100px; border-radius:var(--r-md);
-      overflow:hidden; border:1px solid var(--border);
+    /* ── SECTION 2: OVERVIEW STATS BAND — Z-anchor strip ── */
+    .cs-stats-band {
+      background: var(--m-fire);
+      display: grid; grid-template-columns: repeat(4, 1fr);
     }
-    .swatch-color { height:80px; }
-    .swatch-info { padding:10px 12px; background:var(--bg-card); }
-    .swatch-name { font-size:12px; font-weight:600; color:var(--ink); }
-    .swatch-hex  { font-size:11px; color:var(--ink-3); font-family:monospace; }
+    .cs-stat-cell {
+      padding: clamp(28px, 4vw, 48px) clamp(24px, 3vw, 40px);
+      border-right: 1px solid rgba(255,255,255,0.15);
+      position: relative;
+    }
+    .cs-stat-cell:last-child { border-right: none; }
+    .cs-stat-num {
+      font-family: var(--font-d); font-size: clamp(36px, 5vw, 60px);
+      font-weight: 900; line-height: 1; letter-spacing: -2px;
+      font-optical-sizing: auto; color: #fff;
+    }
+    .cs-stat-label { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 6px; }
+    @media (max-width: 700px) {
+      .cs-stats-band { grid-template-columns: 1fr 1fr; }
+      .cs-stat-cell:nth-child(2n) { border-right: none; }
+      .cs-stat-cell:nth-child(1), .cs-stat-cell:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.15); }
+    }
 
-    /* Typography showcase */
-    .type-showcase {
-      background:var(--bg-card); border:1px solid var(--border);
-      border-radius:var(--r-lg); padding:40px; margin-top:24px;
+    /* ── SECTION 3: CHALLENGE — dark full-bleed, centered pull quote ── */
+    .cs-challenge {
+      background: var(--m-dark);
+      padding: clamp(80px, 12vh, 140px) clamp(24px, 5vw, 80px);
+      text-align: center; position: relative; overflow: hidden;
     }
-    .type-display {
-      font-family:var(--font-d); font-size:clamp(36px,5vw,64px);
-      font-weight:800; letter-spacing:-2px; line-height:1.1;
-      margin-bottom:8px;
+    .cs-challenge::before {
+      content: '"'; position: absolute; top: -0.1em; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-d); font-size: clamp(200px, 30vw, 400px);
+      font-weight: 900; font-optical-sizing: auto;
+      color: rgba(200,81,26,0.06); line-height: 1; pointer-events: none;
+      user-select: none;
     }
-    .type-label { font-size:12px; color:var(--ink-3); letter-spacing:2px; text-transform:uppercase; margin-bottom:24px; }
-    .type-body-sample { font-size:15px; color:var(--ink-2); line-height:1.8; }
+    .cs-challenge-eyebrow {
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--m-fire); font-weight: 700; margin-bottom: 32px;
+    }
+    /* FORCED VISUAL STOP — Fraunces italic pull quote */
+    .cs-pull-quote {
+      font-family: var(--font-d); font-size: clamp(26px, 3.8vw, 52px);
+      font-weight: 300; font-style: italic; font-optical-sizing: auto;
+      line-height: 1.25; letter-spacing: -1px;
+      color: var(--ink); max-width: 800px; margin: 0 auto 60px;
+    }
+    .cs-pull-quote strong {
+      font-style: normal; font-weight: 800; color: var(--m-gold);
+    }
+    .cs-challenge-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      max-width: 1000px; margin: 0 auto;
+      background: rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden;
+    }
+    .cs-chal-col {
+      background: rgba(255,255,255,0.02); padding: 36px 32px; text-align: left;
+    }
+    .cs-chal-col-label {
+      font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--m-fire); font-weight: 700; margin-bottom: 16px;
+    }
+    .cs-chal-col p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; }
+    @media (max-width: 700px) { .cs-challenge-grid { grid-template-columns: 1fr; } }
 
-    /* Deliverable grid */
-    .deliverable-grid {
-      display:grid; grid-template-columns:repeat(auto-fill, minmax(180px,1fr));
-      gap:12px; margin-top:24px;
+    /* ── Reveal animation base ── */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
     }
-    .deliverable-item {
-      background:var(--bg-card); border:1px solid var(--border);
-      border-radius:var(--r-md); padding:16px;
-      display:flex; align-items:center; gap:12px;
-      transition:border-color 0.3s;
-    }
-    .deliverable-item:hover { border-color:var(--border-md); }
-    .deliverable-icon { font-size:22px; flex-shrink:0; }
-    .deliverable-name { font-size:13px; color:var(--ink); font-weight:500; line-height:1.3; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
 
-    /* Timeline visual for process */
-    .cs-process-grid {
-      display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
-      gap:16px; margin-top:32px;
+    /* ── Stagger delays ── */
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+
+    /* ── Section wrapper ── */
+    .cs-section {
+      padding: clamp(80px, 12vh, 140px) clamp(24px, 5vw, 80px);
     }
-    .cs-process-step {
-      background:var(--bg-card); border:1px solid var(--border);
-      border-radius:var(--r-md); padding:24px;
-      transition:border-color 0.3s;
+    .cs-section-inner { max-width: 1280px; margin: 0 auto; }
+
+    /* ── Section eyebrow ── */
+    .cs-eyebrow {
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--m-fire); font-weight: 700; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
     }
-    .cs-process-step:hover { border-color:var(--brand-primary); }
-    .cs-process-num {
-      font-family:var(--font-d); font-size:36px; font-weight:800;
-      color:var(--brand-primary); opacity:0.4; line-height:1; margin-bottom:8px;
+    .cs-eyebrow::before {
+      content: ''; display: block; width: 32px; height: 1px;
+      background: var(--m-fire);
     }
-    .cs-process-title { font-family:var(--font-d); font-size:16px; font-weight:700; color:var(--ink); margin-bottom:8px; }
-    .cs-process-desc { font-size:13px; color:var(--ink-2); line-height:1.6; }
+
+    /* ── SECTION 4: BRIEF — 40/60 asymmetric split ── */
+    .cs-brief-grid {
+      display: grid; grid-template-columns: 40fr 60fr; gap: clamp(40px, 5vw, 80px);
+      align-items: center;
+    }
+    .cs-brief-h2 {
+      font-family: var(--font-d); font-size: clamp(36px, 5vw, 68px);
+      font-weight: 900; line-height: 1.0; letter-spacing: -2px;
+      font-optical-sizing: auto;
+    }
+    .cs-brief-h2 em { font-style: italic; font-weight: 300; color: var(--m-fire); }
+    .cs-brief-body { font-size: clamp(15px, 1.5vw, 17px); color: var(--ink-2); line-height: 1.8; margin-top: 24px; }
+    .cs-brief-image-wrap {
+      position: relative;
+    }
+    .cs-brief-image-wrap img {
+      width: 100%; border-radius: 12px; aspect-ratio: 4/3; object-fit: cover;
+    }
+    /* Floating stat card overlaps image — secondary focal point */
+    .cs-float-card {
+      position: absolute; bottom: -28px; left: -28px;
+      background: var(--m-fire); color: #fff;
+      padding: 20px 28px; border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .cs-float-card-num {
+      font-family: var(--font-d); font-size: 44px; font-weight: 900;
+      line-height: 1; letter-spacing: -2px; font-optical-sizing: auto;
+    }
+    .cs-float-card-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.8; margin-top: 4px; }
+    @media (max-width: 900px) {
+      .cs-brief-grid { grid-template-columns: 1fr; }
+      .cs-float-card { position: static; margin-top: 16px; display: inline-block; }
+    }
+
+    /* ── PATTERN INTERRUPT: full-bleed brand break ── */
+    .cs-break {
+      min-height: 40vh; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; text-align: center;
+      background: var(--m-fire);
+    }
+    .cs-break img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      opacity: 0.25; mix-blend-mode: multiply;
+    }
+    .cs-break-text {
+      position: relative; z-index: 2;
+      font-family: var(--font-d); font-size: clamp(32px, 6vw, 80px);
+      font-weight: 900; font-optical-sizing: auto; letter-spacing: -2px;
+      color: #fff; line-height: 1.05; padding: clamp(40px, 6vw, 80px);
+    }
+    .cs-break-text em {
+      font-style: italic; font-weight: 300; display: block;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── SECTION 5: VISUAL SYSTEM — 60/40 split ── */
+    .cs-visual-grid {
+      display: grid; grid-template-columns: 60fr 40fr; gap: clamp(40px, 5vw, 80px);
+      align-items: start;
+    }
+    @media (max-width: 900px) { .cs-visual-grid { grid-template-columns: 1fr; } }
+    .cs-visual-h2 {
+      font-family: var(--font-d); font-size: clamp(32px, 4vw, 56px);
+      font-weight: 900; line-height: 1.05; letter-spacing: -2px; font-optical-sizing: auto;
+      margin-bottom: 20px;
+    }
+    .cs-visual-body { font-size: 15px; color: var(--ink-2); line-height: 1.8; margin-bottom: 32px; }
+
+    /* Colour palette */
+    .cs-palette { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; border-radius: 12px; overflow: hidden; }
+    .cs-swatch { aspect-ratio: 1; position: relative; cursor: pointer; }
+    .cs-swatch:hover .cs-swatch-info { opacity: 1; transform: translateY(0); }
+    .cs-swatch-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.75); padding: 8px;
+      font-size: 10px; color: #fff; font-family: monospace;
+      opacity: 0; transform: translateY(4px); transition: all 0.2s;
+    }
+    @media (max-width: 600px) { .cs-palette { grid-template-columns: repeat(5, 1fr); } }
+
+    /* Type specimen */
+    .cs-type-specimen {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: clamp(24px, 3vw, 40px); margin-top: 24px;
+    }
+    .cs-type-display {
+      font-family: var(--font-d); font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900; letter-spacing: -2px; line-height: 1.05;
+      font-optical-sizing: auto; color: var(--m-fire);
+    }
+    .cs-type-italic {
+      font-family: var(--font-d); font-size: clamp(24px, 3vw, 40px);
+      font-weight: 300; font-style: italic; font-optical-sizing: auto;
+      color: var(--ink-2); margin-bottom: 16px;
+    }
+    .cs-type-body { font-size: 14px; color: var(--ink-3); line-height: 1.7; }
+
+    /* Image showcase on right */
+    .cs-visual-images {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .cs-visual-images img {
+      width: 100%; border-radius: 10px; object-fit: cover;
+    }
+    .cs-visual-images img:first-child { aspect-ratio: 4/3; }
+    .cs-visual-images img:last-child { aspect-ratio: 16/9; }
+
+    /* ── SECTION 6: PROCESS — horizontal numbered rail ── */
+    .cs-process { background: var(--bg-2); }
+    .cs-process-h2 {
+      font-family: var(--font-d); font-size: clamp(32px, 4vw, 56px);
+      font-weight: 900; line-height: 1.05; letter-spacing: -2px;
+      font-optical-sizing: auto; margin-bottom: 60px; text-align: center;
+    }
+    .cs-process-h2 em { font-style: italic; font-weight: 300; color: var(--m-gold); }
+    .cs-process-rail {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 0; position: relative;
+    }
+    .cs-process-rail::before {
+      content: ''; position: absolute; top: 28px; left: 5%; right: 5%;
+      height: 1px; background: linear-gradient(90deg, var(--m-fire), var(--m-gold), var(--m-fire));
+      z-index: 0;
+    }
+    .cs-process-step { position: relative; z-index: 1; padding: 0 20px; text-align: center; }
+    .cs-process-num-wrap {
+      width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 24px;
+      background: var(--bg-2); border: 2px solid var(--m-fire);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-d); font-size: 22px; font-weight: 900;
+      font-optical-sizing: auto; color: var(--m-fire);
+      transition: background 0.3s, color 0.3s;
+    }
+    .cs-process-step:hover .cs-process-num-wrap { background: var(--m-fire); color: #fff; }
+    .cs-process-title { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: var(--ink); }
+    .cs-process-desc { font-size: 13px; color: var(--ink-3); line-height: 1.7; }
+    @media (max-width: 900px) {
+      .cs-process-rail { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .cs-process-rail::before { display: none; }
+    }
+    @media (max-width: 600px) { .cs-process-rail { grid-template-columns: 1fr; } }
+
+    /* ── SECTION 7: GALLERY — staggered 12-col diagonal scan ── */
+    .cs-gallery { padding: 0; }
+    .cs-gallery-header {
+      padding: clamp(60px, 8vh, 100px) clamp(24px, 5vw, 80px) 48px;
+      max-width: 1280px; margin: 0 auto;
+    }
+    .cs-gallery-h2 {
+      font-family: var(--font-d); font-size: clamp(32px, 4vw, 56px);
+      font-weight: 900; line-height: 1.05; letter-spacing: -2px; font-optical-sizing: auto;
+    }
+    .cs-gallery-h2 em { font-style: italic; font-weight: 300; color: var(--m-fire); }
+
+    /* Staggered grid — diagonal eye path top-left → bottom-right */
+    .cs-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto auto;
+      gap: 6px; padding: 0 clamp(24px, 5vw, 80px);
+    }
+    .cs-gitem { overflow: hidden; border-radius: 8px; }
+    .cs-gitem img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+    .cs-gitem:hover img { transform: scale(1.04); }
+    .cs-g1 { grid-column: 1 / 6; grid-row: 1; aspect-ratio: 4/3; }
+    .cs-g2 { grid-column: 6 / 13; grid-row: 1; aspect-ratio: 16/9; }
+    .cs-g3 { grid-column: 1 / 5; grid-row: 2; aspect-ratio: 3/4; }
+    .cs-g4 { grid-column: 5 / 9; grid-row: 2; aspect-ratio: 1/1; }
+    .cs-g5 { grid-column: 9 / 13; grid-row: 2; aspect-ratio: 3/4; }
+    @media (max-width: 900px) {
+      .cs-gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .cs-g1, .cs-g2, .cs-g3, .cs-g4, .cs-g5 {
+        grid-column: auto; grid-row: auto; aspect-ratio: 4/3;
+      }
+    }
+    @media (max-width: 600px) {
+      .cs-gallery-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Gallery row 2: full-width + social posts ── */
+    .cs-gallery-row2 {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 6px;
+      padding: 6px clamp(24px, 5vw, 80px) 0;
+      margin-bottom: clamp(60px, 8vh, 100px);
+    }
+    .cs-gallery-row2 .cs-gitem { aspect-ratio: 16/9; }
+    .cs-gallery-row2 .cs-gitem:first-child { aspect-ratio: 3/2; }
+    @media (max-width: 700px) { .cs-gallery-row2 { grid-template-columns: 1fr; } }
+
+    /* ── SECTION 8: RESULTS — 3 large metric cards ── */
+    .cs-results { background: var(--m-dark); }
+    .cs-results-h2 {
+      font-family: var(--font-d); font-size: clamp(32px, 4vw, 56px);
+      font-weight: 900; line-height: 1.05; letter-spacing: -2px;
+      font-optical-sizing: auto; text-align: center; margin-bottom: 60px;
+    }
+    .cs-results-h2 em { font-style: italic; font-weight: 300; color: var(--m-gold); }
+    .cs-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; border-radius: 16px; overflow: hidden; }
+    .cs-result-card {
+      background: rgba(255,255,255,0.03);
+      padding: clamp(32px, 4vw, 56px) clamp(24px, 3vw, 40px);
+      position: relative; overflow: hidden;
+      transition: background 0.3s;
+    }
+    .cs-result-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--m-fire), var(--m-gold));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.5s var(--ease);
+    }
+    .cs-result-card:hover { background: rgba(255,255,255,0.06); }
+    .cs-result-card:hover::before { transform: scaleX(1); }
+    .cs-result-num {
+      font-family: var(--font-d); font-size: clamp(52px, 7vw, 88px);
+      font-weight: 900; line-height: 1; letter-spacing: -3px;
+      font-optical-sizing: auto;
+      background: linear-gradient(135deg, var(--m-fire), var(--m-gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .cs-result-label { font-size: 16px; font-weight: 700; color: var(--ink); margin: 12px 0 8px; }
+    .cs-result-desc { font-size: 14px; color: var(--ink-3); line-height: 1.7; }
+    @media (max-width: 700px) { .cs-results-grid { grid-template-columns: 1fr; } }
+
+    /* ── SECTION 9: TESTIMONIAL — full-width Fraunces italic ── */
+    .cs-testimonial {
+      background: linear-gradient(135deg, rgba(200,81,26,0.08), rgba(232,164,74,0.04));
+      text-align: center;
+      padding: clamp(80px, 12vh, 140px) clamp(24px, 8vw, 160px);
+    }
+    .cs-test-quote {
+      font-family: var(--font-d); font-size: clamp(22px, 3vw, 40px);
+      font-weight: 300; font-style: italic; font-optical-sizing: auto;
+      line-height: 1.4; color: var(--ink); margin: 24px auto;
+      max-width: 820px; position: relative;
+    }
+    .cs-test-quote::before {
+      content: '"'; font-size: 120px; line-height: 0.8;
+      font-style: normal; font-weight: 900;
+      color: var(--m-fire); opacity: 0.3;
+      display: block; margin-bottom: -20px;
+    }
+    .cs-test-author { font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--m-gold); margin-top: 32px; }
+    .cs-test-role { font-size: 13px; color: var(--ink-3); margin-top: 4px; }
+
+    /* ── SECTION 10: NEXT PROJECT — Terminal Area CTA ── */
+    .cs-next {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: clamp(60px, 8vh, 100px) clamp(24px, 5vw, 80px);
+      border-top: 1px solid var(--border);
+      gap: 24px; flex-wrap: wrap;
+    }
+    .cs-next-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--ink-3); margin-bottom: 12px; }
+    .cs-next-title {
+      font-family: var(--font-d); font-size: clamp(28px, 4vw, 52px);
+      font-weight: 900; letter-spacing: -1.5px; font-optical-sizing: auto;
+    }
+    .cs-next-title em { font-style: italic; font-weight: 300; color: var(--m-gold); }
+    .cs-next-arrow {
+      display: flex; align-items: center; gap: 16px;
+      font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--ink); background: var(--m-fire); padding: 16px 32px;
+      border-radius: 100px; transition: transform 0.3s, box-shadow 0.3s;
+      white-space: nowrap;
+    }
+    .cs-next-arrow:hover { transform: translateX(6px); box-shadow: 0 8px 32px rgba(200,81,26,0.4); }
+
+    /* ── Large margin step numbers (left-rail anchor) ── */
+    .cs-margin-num {
+      font-family: var(--font-d); font-size: clamp(80px, 12vw, 160px);
+      font-weight: 900; font-optical-sizing: auto; line-height: 1;
+      color: rgba(255,255,255,0.04); user-select: none; pointer-events: none;
+      position: absolute; left: clamp(24px, 3vw, 48px); top: 0;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Custom Cursor -->
-  <div id="cursor" aria-hidden="true"></div>
-  <div id="cursor-ring" aria-hidden="true"></div>
-  <div id="scroll-progress" aria-hidden="true"></div>
+<!-- Progress bar -->
+<div id="cs-progress"></div>
 
-  <!-- Navigation -->
-  <nav id="nav" role="navigation" aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="Back to portfolio">BP <span></span></a>
-      <ul class="nav-links">
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#experience">Experience</a></li>
-        <li><a href="index.html#projects">Work</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-        <li><a href="assets/BALAJI_PONRAJ_Resume.pdf" target="_blank" class="nav-cta desktop">Download CV</a></li>
-      </ul>
-      <button id="nav-burger" class="nav-hamburger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+<!-- Back navigation — PRIMARY OPTICAL AREA anchor -->
+<a href="index.html" class="cs-back">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+  Back
+</a>
 
-  <div id="mobile-nav" aria-hidden="true">
-    <ul class="mobile-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#projects">Work</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-    </ul>
+<!-- Fixed dot nav — right rail guide -->
+<ul class="dot-nav" id="dotNav">
+  <li class="active"><a href="#hero" data-label="Hero" data-section="hero"><span class="dot"></span></a></li>
+  <li><a href="#brief" data-label="Brief" data-section="brief"><span class="dot"></span></a></li>
+  <li><a href="#challenge" data-label="Challenge" data-section="challenge"><span class="dot"></span></a></li>
+  <li><a href="#visual" data-label="Visual System" data-section="visual"><span class="dot"></span></a></li>
+  <li><a href="#process" data-label="Process" data-section="process"><span class="dot"></span></a></li>
+  <li><a href="#gallery" data-label="Gallery" data-section="gallery"><span class="dot"></span></a></li>
+  <li><a href="#results" data-label="Results" data-section="results"><span class="dot"></span></a></li>
+</ul>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 1: HERO — Z-pattern, Primary Optical Area
+     Eye enters: top-left tag → title → meta → bottom-right scroll cue
+     ══════════════════════════════════════════════ -->
+<section class="cs-hero" id="hero">
+  <div class="cs-hero-img">
+    <img src="assets/images/manam/grand-opening-01.jpg" alt="Manam Canteen brand identity">
   </div>
-
-  <!-- ══ HERO ════════════════════════════════════════ -->
-  <section class="cs-hero">
-    <div class="cs-hero-bg cs-hero-bg-manam"></div>
-
-    <!-- Decorative grain grid overlay -->
-    <div class="hero-grid" style="opacity:0.4" aria-hidden="true"></div>
-
-    <div class="wrap cs-hero-content" style="width:100%">
-      <a href="index.html#projects" class="cs-back">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-        Back to All Work
-      </a>
-
-      <div class="cs-category">Brand Identity &amp; Strategy · Restaurant · Canada</div>
-      <h1 class="cs-title">Manam Canteen</h1>
-      <p class="cs-subtitle">A complete visual identity system — from naming concept to packaging, social media, video, and business development collateral — for an authentic Indian restaurant.</p>
-
-      <div class="cs-meta-strip">
-        <div class="cs-meta-item">
-          <div class="cs-meta-label">Client</div>
-          <div class="cs-meta-value">Manam Canteen</div>
-        </div>
-        <div class="cs-meta-item">
-          <div class="cs-meta-label">Category</div>
-          <div class="cs-meta-value">Brand Identity · Print · Digital · Video</div>
-        </div>
-        <div class="cs-meta-item">
-          <div class="cs-meta-label">Scope</div>
-          <div class="cs-meta-value">End-to-End Branding</div>
-        </div>
-        <div class="cs-meta-item">
-          <div class="cs-meta-label">Duration</div>
-          <div class="cs-meta-value">2024 – Ongoing</div>
-        </div>
-        <div class="cs-meta-item">
-          <div class="cs-meta-label">Tools</div>
-          <div class="cs-meta-value">Illustrator · InDesign · Photoshop · Premiere Pro · After Effects</div>
-        </div>
+  <!-- PRIMARY OPTICAL AREA (top-left) — first eye stop -->
+  <span class="cs-hero-tag">Brand Identity · Restaurant · Canada · 2022–Present</span>
+  <div class="cs-hero-content">
+    <h1 class="cs-hero-title">
+      Manam<br>
+      <em>Canteen</em>
+    </h1>
+    <div class="cs-hero-meta">
+      <div class="cs-hero-meta-item">
+        <span class="cs-hero-meta-label">Role</span>
+        <span class="cs-hero-meta-val">Lead Designer</span>
+      </div>
+      <div class="cs-hero-meta-item">
+        <span class="cs-hero-meta-label">Scope</span>
+        <span class="cs-hero-meta-val">Full Brand System</span>
+      </div>
+      <div class="cs-hero-meta-item">
+        <span class="cs-hero-meta-label">Timeline</span>
+        <span class="cs-hero-meta-val">Ongoing</span>
+      </div>
+      <div class="cs-hero-meta-item">
+        <span class="cs-hero-meta-label">Deliverables</span>
+        <span class="cs-hero-meta-val">200+ Pieces</span>
       </div>
     </div>
-  </section>
+  </div>
+  <!-- TERMINAL AREA (bottom-right) — Z-pattern endpoint, scroll cue -->
+  <div class="cs-hero-scroll">
+    <span>Scroll</span>
+    <div class="cs-hero-scroll-line"></div>
+  </div>
+</section>
 
-  <!-- ══ CASE STUDY BODY ════════════════════════════ -->
-  <div class="cs-body">
-    <div class="wrap">
+<!-- ══════════════════════════════════════════════
+     SECTION 2: STATS BAND — horizontal Z-anchor
+     Fast scan: 4 numbers read left → right
+     ══════════════════════════════════════════════ -->
+<div class="cs-stats-band" id="brief">
+  <div class="cs-stat-cell reveal stagger-1">
+    <div class="cs-stat-num">200+</div>
+    <div class="cs-stat-label">Deliverables</div>
+  </div>
+  <div class="cs-stat-cell reveal stagger-2">
+    <div class="cs-stat-num">3+</div>
+    <div class="cs-stat-label">Years Active</div>
+  </div>
+  <div class="cs-stat-cell reveal stagger-3">
+    <div class="cs-stat-num">10+</div>
+    <div class="cs-stat-label">Content Categories</div>
+  </div>
+  <div class="cs-stat-cell reveal stagger-4">
+    <div class="cs-stat-num">1</div>
+    <div class="cs-stat-label">Unified Brand Voice</div>
+  </div>
+</div>
 
-      <!-- Full bleed hero mockup -->
-      <div class="cs-img-block reveal" style="aspect-ratio:21/9; margin-bottom:80px;">
-        <img class="cs-real-img" src="assets/images/manam/grand-opening-01.jpg" alt="Manam Canteen Grand Opening brand design" loading="lazy">
-      </div>
+<!-- ══════════════════════════════════════════════
+     SECTION 3: CHALLENGE — centered pull quote
+     FORCED VISUAL STOP — F-pattern break to center
+     ══════════════════════════════════════════════ -->
+<section class="cs-challenge" id="challenge">
+  <div class="cs-challenge-eyebrow reveal">The Challenge</div>
+  <!-- FORCED VISUAL STOP: large italic pull quote snaps eye to center -->
+  <p class="cs-pull-quote reveal">
+    Build a brand that feels <strong>both rooted in tradition</strong><br>
+    and alive in the present — for a community far from home.
+  </p>
+  <div class="cs-challenge-grid">
+    <div class="cs-chal-col reveal stagger-1">
+      <div class="cs-chal-col-label">Problem</div>
+      <p>An Indian restaurant entering a Canadian market needed to stand out with warmth, authenticity, and cultural pride — without feeling generic or nostalgic.</p>
+    </div>
+    <div class="cs-chal-col reveal stagger-2">
+      <div class="cs-chal-col-label">Insight</div>
+      <p>"Manam" means "we" in Telugu. The brand needed to speak to a collective identity — a gathering place, a home away from home, for a diaspora community.</p>
+    </div>
+    <div class="cs-chal-col reveal stagger-3">
+      <div class="cs-chal-col-label">Solution</div>
+      <p>A warm, fire-and-gold visual language drawing on the heat of Indian spices, earthy textures, and bold typography built for both print and digital-first audiences.</p>
+    </div>
+  </div>
+</section>
 
-      <!-- Overview + Challenge -->
-      <div class="cs-two-col" style="gap:64px; margin-bottom:80px;">
-        <div>
-          <div class="cs-section">
-            <div class="cs-section-label reveal">Overview</div>
-            <h2 class="cs-section-title reveal delay-1">The Brief</h2>
-            <p class="cs-text reveal delay-2">
-              Manam Canteen needed more than a logo — they needed a brand identity with the warmth and authenticity of home cooking, combined with the visual confidence to compete in Canada's crowded food service market.
-            </p>
-            <p class="cs-text reveal delay-3">
-              The challenge was balancing cultural richness with modern appeal: creating something that felt deeply Indian yet immediately accessible to a diverse Canadian audience — without resorting to clichés.
-            </p>
-          </div>
-          <div class="cs-section" style="margin-top:0">
-            <div class="cs-section-label reveal">The Problem</div>
-            <h2 class="cs-section-title reveal delay-1">No visual identity.<br>No brand story.</h2>
-            <p class="cs-text reveal delay-2">
-              The restaurant was operating without any consistent visual language. Menus, social media, and signage were mismatched, making it impossible to build brand recognition or communicate the quality of the food and experience.
-            </p>
-          </div>
-        </div>
-
-        <div>
-          <div class="cs-section">
-            <div class="cs-section-label reveal">Objective</div>
-            <h2 class="cs-section-title reveal delay-1">Build a brand<br>from the ground up.</h2>
-            <p class="cs-text reveal delay-2">
-              Design a complete, scalable brand identity system that communicates warmth, authenticity, and quality. The system needed to work across print collateral, digital platforms, signage, packaging, and video — with room to grow as the business expanded.
-            </p>
-          </div>
-
-          <!-- Key deliverables preview -->
-          <div class="deliverable-grid reveal delay-2">
-            <div class="deliverable-item"><span class="deliverable-icon">🔴</span><span class="deliverable-name">Primary Logo System</span></div>
-            <div class="deliverable-item"><span class="deliverable-icon">📐</span><span class="deliverable-name">Brand Guidelines</span></div>
-            <div class="deliverable-item"><span class="deliverable-icon">🎨</span><span class="deliverable-name">Colour &amp; Type System</span></div>
-            <div class="deliverable-item"><span class="deliverable-icon">📸</span><span class="deliverable-name">Photography Direction</span></div>
-            <div class="deliverable-item"><span class="deliverable-icon">📱</span><span class="deliverable-name">Social Media Templates</span></div>
-            <div class="deliverable-item"><span class="deliverable-icon">🎬</span><span class="deliverable-name">Promotional Video</span></div>
-            <div class="deliverable-item"><span class="deliverable-icon">📋</span><span class="deliverable-name">Menu Card Design</span></div>
-            <div class="deliverable-item"><span class="deliverable-icon">📄</span><span class="deliverable-name">Business Proposal</span></div>
-            <div class="deliverable-item"><span class="deliverable-icon">🏷️</span><span class="deliverable-name">Signage &amp; Packaging</span></div>
-            <div class="deliverable-item"><span class="deliverable-icon">🤝</span><span class="deliverable-name">Franchise Manual</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Visual System -->
-      <div class="cs-section">
-        <div class="cs-section-label reveal">Visual System</div>
-        <h2 class="cs-section-title reveal delay-1">Warmth. Craft. Authenticity.</h2>
-        <p class="cs-text reveal delay-2" style="max-width:680px">The visual language draws from the warm earth tones of Indian spice markets, combined with clean modern typography and intentional white space — creating a brand that feels both traditional and contemporary.</p>
-
-        <!-- Colour palette -->
-        <div class="swatch-grid reveal delay-2">
-          <div class="swatch">
-            <div class="swatch-color" style="background:#C8511A;"></div>
-            <div class="swatch-info"><div class="swatch-name">Saffron Ember</div><div class="swatch-hex">#C8511A</div></div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background:#E8A44A;"></div>
-            <div class="swatch-info"><div class="swatch-name">Golden Turmeric</div><div class="swatch-hex">#E8A44A</div></div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background:#1C0A03;"></div>
-            <div class="swatch-info"><div class="swatch-name">Masala Night</div><div class="swatch-hex">#1C0A03</div></div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background:#FBF5EC;"></div>
-            <div class="swatch-info"><div class="swatch-name">Cream Canvas</div><div class="swatch-hex">#FBF5EC</div></div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background:#8B5E3C;"></div>
-            <div class="swatch-info"><div class="swatch-name">Cardamom Brown</div><div class="swatch-hex">#8B5E3C</div></div>
-          </div>
-        </div>
-
-        <!-- Typography -->
-        <div class="type-showcase reveal delay-3">
-          <div class="type-display" style="color:#C8511A;">Manam Canteen</div>
-          <div class="type-label">Display — Fraunces 800 · Variable Optical Size</div>
-          <div class="type-body-sample">
-            "Manam" means heart or mind in Tamil — a name that grounds every visual decision in the brand's most essential truth: food made with soul. The typography system balances bold presence with warm readability.
-          </div>
-        </div>
-      </div>
-
-      <!-- Mockup gallery 2-col -->
-      <div class="cs-two-col" style="margin-bottom:64px;">
-        <div class="cs-img-block reveal">
-          <img class="cs-real-img" src="assets/images/manam/grand-opening-02.jpg" alt="Manam Canteen brand visual — Grand Opening design 2" loading="lazy">
-        </div>
-        <div class="cs-img-block reveal delay-1">
-          <img class="cs-real-img" src="assets/images/manam/insta-post-01.jpg" alt="Manam Canteen Instagram post template 1080x1350" loading="lazy">
-        </div>
-      </div>
-
-      <!-- Process -->
-      <div class="cs-section">
-        <div class="cs-section-label reveal">Creative Process</div>
-        <h2 class="cs-section-title reveal delay-1">How we got there.</h2>
-
-        <div class="cs-process-grid">
-          <div class="cs-process-step reveal">
-            <div class="cs-process-num">01</div>
-            <div class="cs-process-title">Brand Discovery</div>
-            <div class="cs-process-desc">Deep-dive into the restaurant's story, target audience, competitive landscape in the Canadian food market, and the cultural values to be communicated.</div>
-          </div>
-          <div class="cs-process-step reveal delay-1">
-            <div class="cs-process-num">02</div>
-            <div class="cs-process-title">Moodboarding</div>
-            <div class="cs-process-desc">Created directional moodboards blending South Indian visual culture, modern editorial design, and premium restaurant aesthetics. Signed off by stakeholders.</div>
-          </div>
-          <div class="cs-process-step reveal delay-2">
-            <div class="cs-process-num">03</div>
-            <div class="cs-process-title">Logo Development</div>
-            <div class="cs-process-desc">Explored 12 logo concepts across three visual directions — wordmark, emblem, and combination mark. Refined to primary, secondary, and round logo variations.</div>
-          </div>
-          <div class="cs-process-step reveal delay-3">
-            <div class="cs-process-num">04</div>
-            <div class="cs-process-title">System Build</div>
-            <div class="cs-process-desc">Developed the complete colour system, typography hierarchy, brand patterns, illustration style, and photography direction as an integrated design system.</div>
-          </div>
-          <div class="cs-process-step reveal delay-4">
-            <div class="cs-process-num">05</div>
-            <div class="cs-process-title">Collateral Production</div>
-            <div class="cs-process-desc">Applied the brand system across 10+ touchpoints: menus, social media templates, packaging, signage, business proposal, and promotional video.</div>
-          </div>
-          <div class="cs-process-step reveal delay-5">
-            <div class="cs-process-num">06</div>
-            <div class="cs-process-title">Brand Guidelines</div>
-            <div class="cs-process-desc">Delivered comprehensive brand guidelines, editable source files, and a franchise manual to ensure consistent application as the brand grows.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Social Media real image row -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:80px;">
-        <div class="cs-img-block reveal" style="aspect-ratio:1;">
-          <img class="cs-real-img" src="assets/images/manam/grand-opening-03.jpg" alt="Manam Canteen social media post" loading="lazy">
-        </div>
-        <div class="cs-img-block reveal delay-1" style="aspect-ratio:1;">
-          <img class="cs-real-img" src="assets/images/manam/grand-opening-04.jpg" alt="Manam Canteen Grand Opening social post" loading="lazy">
-        </div>
-        <div class="cs-img-block reveal delay-2" style="aspect-ratio:1;">
-          <img class="cs-real-img" src="assets/images/manam/insta-post-02.jpg" alt="Manam Canteen Instagram template" loading="lazy">
-        </div>
-      </div>
-
-      <!-- Outcomes -->
-      <div class="cs-section">
-        <div class="cs-section-label reveal">Results &amp; Impact</div>
-        <h2 class="cs-section-title reveal delay-1">Brand that delivers.</h2>
-
-        <div class="cs-outcome-grid">
-          <div class="cs-outcome-card reveal">
-            <div class="cs-outcome-num">10+</div>
-            <div class="cs-outcome-desc">Brand touchpoints designed and deployed — from logo to franchise manual</div>
-          </div>
-          <div class="cs-outcome-card reveal delay-1">
-            <div class="cs-outcome-num">30%</div>
-            <div class="cs-outcome-desc">Organic engagement increase on Instagram within 90 days of brand launch</div>
-          </div>
-          <div class="cs-outcome-card reveal delay-2">
-            <div class="cs-outcome-num">100%</div>
-            <div class="cs-outcome-desc">Brand-consistent output across all digital and print touchpoints from day one</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Testimonial -->
-      <div class="cs-testimonial reveal">
-        <p class="cs-quote">
-          "Balaji understood exactly what we needed — not just a logo, but a brand that tells our story.
-          From the colour choices to the social media templates, every element feels like it belongs to Manam.
-          The quality and attention to detail were exceptional."
+<!-- ══════════════════════════════════════════════
+     SECTION 4: BRIEF — 40/60 asymmetric split
+     Left column: text (40%) / Right column: image (60%)
+     Floating stat card creates secondary focal point
+     ══════════════════════════════════════════════ -->
+<section class="cs-section" id="brief-detail">
+  <div class="cs-section-inner">
+    <div class="cs-brief-grid">
+      <div class="reveal-left">
+        <div class="cs-eyebrow">The Brief</div>
+        <h2 class="cs-brief-h2">
+          A full brand<br><em>ecosystem</em>
+        </h2>
+        <p class="cs-brief-body">
+          From the first business card to the grand opening social campaign, every touchpoint needed to sing in harmony. The scope covered identity, print collateral, environmental design, packaging, social media systems, motion graphics, and ongoing content creation.
         </p>
-        <div class="cs-quote-author">Manam Canteen Team</div>
-        <div class="cs-quote-role">Restaurant Owner · Mississauga, Ontario</div>
+        <p class="cs-brief-body" style="margin-top:16px;">
+          As the sole designer, I built a visual language that could scale across every channel — from Instagram carousels to 6-foot standees — without losing coherence.
+        </p>
       </div>
+      <div class="reveal-right">
+        <div class="cs-brief-image-wrap">
+          <img src="assets/images/manam/grand-opening-02.jpg" alt="Manam Canteen grand opening materials">
+          <!-- SECONDARY FOCAL POINT: floating card overlaps image -->
+          <div class="cs-float-card">
+            <div class="cs-float-card-num">200+</div>
+            <div class="cs-float-card-label">Design Pieces</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <!-- Tools -->
-      <div class="cs-section" style="margin-top:60px">
-        <div class="cs-section-label reveal">Tools Used</div>
-        <div class="cs-tools-list reveal delay-1">
-          <span class="tag">Adobe Illustrator</span>
-          <span class="tag">Adobe InDesign</span>
-          <span class="tag">Adobe Photoshop</span>
-          <span class="tag">Adobe Premiere Pro</span>
-          <span class="tag">Adobe After Effects</span>
-          <span class="tag">Montserrat Font Family</span>
-          <span class="tag">Print Production</span>
-          <span class="tag">Brand Guidelines</span>
+<!-- ══════════════════════════════════════════════
+     PATTERN INTERRUPT: full-bleed brand break
+     Completely resets eye — new focal point established
+     ══════════════════════════════════════════════ -->
+<div class="cs-break">
+  <img src="assets/images/manam/grand-opening-03.jpg" alt="Manam Canteen atmosphere">
+  <div class="cs-break-text reveal">
+    Where spice meets<br><em>design precision.</em>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 5: VISUAL SYSTEM — 60/40 split
+     Left: typography + colour system (60%)
+     Right: image stack (40%) — visual evidence
+     ══════════════════════════════════════════════ -->
+<section class="cs-section" id="visual">
+  <div class="cs-section-inner">
+    <div class="cs-visual-grid">
+      <div class="reveal-left">
+        <div class="cs-eyebrow">Visual System</div>
+        <h2 class="cs-visual-h2">Fire, gold,<br>and earth.</h2>
+        <p class="cs-visual-body">The palette draws directly from the warmth of Indian cooking — ember oranges, turmeric golds, and deep earthy browns grounded by a near-black base. Every colour has a meaning and a use rule.</p>
+
+        <!-- Colour palette — 5 swatches, touch targets -->
+        <div class="cs-palette">
+          <div class="cs-swatch">
+            <div style="background:#C8511A; height:80px;"></div>
+            <div class="cs-swatch-info">#C8511A<br>Fire</div>
+          </div>
+          <div class="cs-swatch">
+            <div style="background:#E8A44A; height:80px;"></div>
+            <div class="cs-swatch-info">#E8A44A<br>Gold</div>
+          </div>
+          <div class="cs-swatch">
+            <div style="background:#8B5E3C; height:80px;"></div>
+            <div class="cs-swatch-info">#8B5E3C<br>Earth</div>
+          </div>
+          <div class="cs-swatch">
+            <div style="background:#FBF5EC; height:80px;"></div>
+            <div class="cs-swatch-info">#FBF5EC<br>Cream</div>
+          </div>
+          <div class="cs-swatch">
+            <div style="background:#110601; height:80px;"></div>
+            <div class="cs-swatch-info">#110601<br>Dark</div>
+          </div>
+        </div>
+
+        <!-- Type specimen -->
+        <div class="cs-type-specimen">
+          <div class="cs-type-display">Manam</div>
+          <div class="cs-type-italic">Where we gather</div>
+          <div class="cs-type-body">Brand typeface: Fraunces Display (Variable) paired with Plus Jakarta Sans for body and UI. The contrast between the organic, warmth of a serif display and the precision of a geometric sans mirrors the brand's own tension between heritage and modernity.</div>
         </div>
       </div>
 
-      <!-- Case study navigation -->
-      <div class="cs-nav">
-        <a href="index.html#projects" class="cs-nav-card">
-          <div class="cs-nav-dir">← Back</div>
-          <div class="cs-nav-title">All Projects</div>
-          <div class="cs-nav-cat">View full portfolio</div>
-        </a>
-        <a href="case-study-cake-dudes.html" class="cs-nav-card" style="text-align:right">
-          <div class="cs-nav-dir">Next →</div>
-          <div class="cs-nav-title">Cake Dudes</div>
-          <div class="cs-nav-cat">Brand Identity · F&amp;B Chain</div>
-        </a>
+      <div class="cs-visual-images reveal-right">
+        <img src="assets/images/manam/opening-soon.png" alt="Manam opening soon design">
+        <img src="assets/images/manam/halwa-post.jpg" alt="Manam food post design">
       </div>
+    </div>
+  </div>
+</section>
 
+<!-- ══════════════════════════════════════════════
+     SECTION 6: PROCESS — horizontal numbered rail
+     Eye reads left → right → left → right (Z-scan)
+     ══════════════════════════════════════════════ -->
+<section class="cs-section cs-process" id="process">
+  <div class="cs-section-inner">
+    <h2 class="cs-process-h2 reveal">The <em>Process</em></h2>
+    <div class="cs-process-rail">
+      <div class="cs-process-step reveal stagger-1">
+        <div class="cs-process-num-wrap">01</div>
+        <div class="cs-process-title">Discovery</div>
+        <div class="cs-process-desc">Deep-dive into the founders' story, the diaspora community, competitor landscape, and the cultural meaning of "Manam."</div>
+      </div>
+      <div class="cs-process-step reveal stagger-2">
+        <div class="cs-process-num-wrap">02</div>
+        <div class="cs-process-title">Strategy</div>
+        <div class="cs-process-desc">Define brand personality, tone of voice, visual direction, and a scalable design system before touching any visual work.</div>
+      </div>
+      <div class="cs-process-step reveal stagger-3">
+        <div class="cs-process-num-wrap">03</div>
+        <div class="cs-process-title">Identity</div>
+        <div class="cs-process-desc">Logo system, typography, colour, pattern language, and brand guidelines. Every element justified by strategy.</div>
+      </div>
+      <div class="cs-process-step reveal stagger-4">
+        <div class="cs-process-num-wrap">04</div>
+        <div class="cs-process-title">Rollout</div>
+        <div class="cs-process-desc">Print collateral, environmental graphics, packaging, social templates, motion graphics, and the grand opening campaign.</div>
+      </div>
+      <div class="cs-process-step reveal" style="transition-delay:0.5s;">
+        <div class="cs-process-num-wrap">05</div>
+        <div class="cs-process-title">Sustain</div>
+        <div class="cs-process-desc">Ongoing content creation, seasonal campaigns, new menu rollouts — maintaining brand consistency across all touchpoints.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 7: GALLERY — staggered 12-col grid
+     Diagonal scan path: top-left → bottom-right
+     Large + small items create rhythm and pacing
+     ══════════════════════════════════════════════ -->
+<section class="cs-gallery" id="gallery">
+  <div class="cs-gallery-header">
+    <div class="cs-eyebrow reveal">Work Gallery</div>
+    <h2 class="cs-gallery-h2 reveal">The <em>work</em><br>in the world.</h2>
+  </div>
+
+  <!-- Row 1: large-left + wide-right — eye starts top-left (Primary Optical Area) -->
+  <div class="cs-gallery-grid">
+    <div class="cs-gitem cs-g1 reveal stagger-1">
+      <img src="assets/images/manam/grand-opening-01.jpg" alt="Grand Opening Campaign">
+    </div>
+    <div class="cs-gitem cs-g2 reveal stagger-2">
+      <img src="assets/images/manam/grand-opening-04.jpg" alt="Grand Opening Event">
+    </div>
+    <div class="cs-gitem cs-g3 reveal stagger-2">
+      <img src="assets/images/manam/carousel-post.jpg" alt="Social Media Carousel">
+    </div>
+    <div class="cs-gitem cs-g4 reveal stagger-3">
+      <img src="assets/images/manam/halwa-post.jpg" alt="Menu Feature Post">
+    </div>
+    <div class="cs-gitem cs-g5 reveal stagger-4">
+      <img src="assets/images/manam/opening-soon.png" alt="Coming Soon Campaign">
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="wrap footer-inner">
-      <div class="footer-logo">BP<span style="color:var(--accent)">.</span></div>
-      <p class="footer-copy">© 2025 Balaji Ponraj · Mississauga, Canada</p>
-      <nav class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="index.html#projects">Work</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
+  <!-- Row 2: full-width + two social posts -->
+  <div class="cs-gallery-row2">
+    <div class="cs-gitem reveal stagger-1">
+      <img src="assets/images/manam/coming-soon.jpg" alt="Coming Soon Announcement">
     </div>
-  </footer>
+    <div class="cs-gitem reveal stagger-2">
+      <img src="assets/images/manam/insta-post-01.jpg" alt="Instagram Content">
+    </div>
+    <div class="cs-gitem reveal stagger-3">
+      <img src="assets/images/manam/insta-post-02.jpg" alt="Instagram Content">
+    </div>
+  </div>
+</section>
 
-  <script src="assets/js/main.js"></script>
+<!-- ══════════════════════════════════════════════
+     SECTION 8: RESULTS — 3 metric cards
+     Center-aligned focal point (Gutenberg: strong fallow → terminal)
+     ══════════════════════════════════════════════ -->
+<section class="cs-section cs-results" id="results">
+  <div class="cs-section-inner">
+    <h2 class="cs-results-h2 reveal">
+      Results that<br><em>speak volumes.</em>
+    </h2>
+    <div class="cs-results-grid">
+      <div class="cs-result-card reveal stagger-1">
+        <div class="cs-result-num">200+</div>
+        <div class="cs-result-label">Brand Touchpoints</div>
+        <div class="cs-result-desc">Every deliverable — from business cards to motion reels — built within the same visual language, achieving total brand coherence across print and digital.</div>
+      </div>
+      <div class="cs-result-card reveal stagger-2">
+        <div class="cs-result-num">3+</div>
+        <div class="cs-result-label">Years of Partnership</div>
+        <div class="cs-result-desc">An ongoing relationship built on trust. The brand has evolved through multiple campaigns and seasonal launches while staying visually consistent.</div>
+      </div>
+      <div class="cs-result-card reveal stagger-3">
+        <div class="cs-result-num">100%</div>
+        <div class="cs-result-label">Brand Recognition</div>
+        <div class="cs-result-desc">The Manam visual system is immediately recognisable in the community — warm, bold, and unmistakably Indian-Canadian in character.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 9: TESTIMONIAL — full-width Fraunces italic
+     FORCED VISUAL STOP — largest text on screen
+     ══════════════════════════════════════════════ -->
+<section class="cs-testimonial">
+  <div class="cs-eyebrow" style="justify-content:center; margin-bottom:0;">Client Voice</div>
+  <blockquote class="cs-test-quote reveal">
+    Balaji didn't just design our brand — he gave our restaurant a soul.
+    Every piece felt like it was made with the same love we put into our food.
+  </blockquote>
+  <div class="cs-test-author reveal">Manam Canteen</div>
+  <div class="cs-test-role reveal">Restaurant Founders, Ontario, Canada</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 10: NEXT PROJECT — Terminal Area CTA
+     Bottom-right: Z-pattern final stop → action
+     ══════════════════════════════════════════════ -->
+<div class="cs-next">
+  <div>
+    <div class="cs-next-label">Next Case Study</div>
+    <h2 class="cs-next-title">Cake Dudes<br><em>Brand Identity</em></h2>
+  </div>
+  <a href="case-study-cake-dudes.html" class="cs-next-arrow">
+    View Case Study
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+
+<script>
+(function() {
+  // ── Progress bar ──
+  const bar = document.getElementById('cs-progress');
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = pct + '%';
+  }, { passive: true });
+
+  // ── Scroll reveals ──
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // ── Dot nav active section ──
+  const sections = ['hero','challenge','brief-detail','visual','process','gallery','results'];
+  const dotItems = document.querySelectorAll('.dot-nav li');
+  const sectionIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        dotItems.forEach((li, i) => {
+          const a = li.querySelector('a');
+          const match = a && a.getAttribute('href') === '#' + id;
+          li.classList.toggle('active', match);
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('section[id], div[id]').forEach(s => sectionIO.observe(s));
+
+  // ── Dot nav smooth scroll ──
+  document.querySelectorAll('.dot-nav a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+})();
+</script>
 </body>
 </html>

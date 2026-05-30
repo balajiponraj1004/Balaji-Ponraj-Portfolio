@@ -627,6 +627,17 @@ body::before {
 .proj-overlay-cta svg { transition:transform 0.3s; }
 .proj-card:hover .proj-overlay-cta svg { transform:translateX(4px); }
 
+/* Preview cards — no link, suppress hover lift & show "coming soon" badge */
+.proj-card--preview { cursor:default; }
+.proj-card--preview:hover { transform:none; border-color:var(--border); }
+.proj-card--preview .proj-overlay::after {
+  content:'Case Study — Coming Soon';
+  display:inline-block; margin-top:12px;
+  font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
+  color:rgba(255,255,255,0.35); border:1px solid rgba(255,255,255,0.15);
+  padding:5px 12px; border-radius:100px;
+}
+
 .proj-info { padding:20px 24px 24px; }
 .proj-info-category { font-size:11px; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
 .proj-info-title { font-family:var(--font-d); font-size:clamp(16px,1.8vw,20px); font-weight:700; color:var(--ink); letter-spacing:-0.5px; }

@@ -201,7 +201,9 @@
 (function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
+      const href = a.getAttribute('href');
+      if (!href || href === '#') { e.preventDefault(); return; } // guard empty anchors
+      const target = document.querySelector(href);
       if (!target) return;
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -254,18 +256,41 @@
   setTimeout(typeStep, 2000);
 })();
 
-/* ── Contact form submission (mock) ── */
+/* ── Contact form submission (Netlify Forms) ── */
 (function initForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
   const btn = form.querySelector('button[type="submit"]');
+
   form.addEventListener('submit', e => {
     e.preventDefault();
-    if (btn) {
-      const orig = btn.textContent;
-      btn.textContent = 'Message Sent ✓';
-      btn.style.background = '#22C55E';
-      setTimeout(() => { btn.textContent = orig; btn.style.background = ''; form.reset(); }, 3000);
+
+    // Basic validation
+    const email = form.querySelector('[name="email"]');
+    const message = form.querySelector('[name="message"]');
+    if (!email || !email.value.trim() || !message || !message.value.trim()) {
+      if (btn) { btn.textContent = 'Please fill required fields'; btn.style.background = '#EF4444'; }
+      setTimeout(() => { if (btn) { btn.textContent = 'Send Message'; btn.style.background = ''; } }, 2500);
+      return;
     }
+
+    if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
+
+    const data = new FormData(form);
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data).toString()
+    })
+      .then(() => {
+        if (btn) { btn.textContent = 'Message Sent ✓'; btn.style.background = '#22C55E'; btn.disabled = false; }
+        form.reset();
+        setTimeout(() => { if (btn) { btn.textContent = 'Send Message'; btn.style.background = ''; } }, 4000);
+      })
+      .catch(() => {
+        if (btn) { btn.textContent = 'Send Failed — Try Email'; btn.style.background = '#EF4444'; btn.disabled = false; }
+        setTimeout(() => { if (btn) { btn.textContent = 'Send Message'; btn.style.background = ''; } }, 4000);
+      });
   });
 })();

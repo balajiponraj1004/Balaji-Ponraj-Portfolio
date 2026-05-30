@@ -570,7 +570,7 @@
         </article>
 
         <!-- 4: Rego Campaign -->
-        <article class="proj-card reveal delay-1" data-category="social">
+        <article class="proj-card proj-card--preview reveal delay-1" data-category="social">
           <div class="proj-thumb proj-thumb-4">
             <img src="assets/images/rego/rego-01.jpg" alt="Rego rideshare brand campaign design" loading="lazy">
             <div class="proj-overlay">
@@ -591,7 +591,7 @@
         </article>
 
         <!-- 5: Corporate Publications -->
-        <article class="proj-card reveal delay-2" data-category="publication">
+        <article class="proj-card proj-card--preview reveal delay-2" data-category="publication">
           <div class="proj-thumb proj-thumb-5">
             <img src="assets/images/portfolio/page-04.jpg" alt="Corporate publication and brochure design" loading="lazy">
             <div class="proj-overlay">
@@ -612,7 +612,7 @@
         </article>
 
         <!-- 6: Presentation Design -->
-        <article class="proj-card reveal" data-category="presentation">
+        <article class="proj-card proj-card--preview reveal" data-category="presentation">
           <div class="proj-thumb proj-thumb-6">
             <img src="assets/images/portfolio/page-06.jpg" alt="Executive presentation design system" loading="lazy">
             <div class="proj-overlay">
@@ -633,7 +633,7 @@
         </article>
 
         <!-- 7: Motion Reel -->
-        <article class="proj-card reveal delay-1" data-category="motion">
+        <article class="proj-card proj-card--preview reveal delay-1" data-category="motion">
           <div class="proj-thumb proj-thumb-7">
             <img src="assets/images/manam/insta-post-01.jpg" alt="Motion graphics and video production work" loading="lazy">
             <div class="proj-overlay">
@@ -927,13 +927,13 @@
                 <div class="contact-link-value">linkedin.com/in/balajiponraj</div>
               </div>
             </a>
-            <a href="#" class="contact-link reveal delay-4">
+            <div class="contact-link reveal delay-4" style="cursor:default;">
               <div class="contact-link-icon">📍</div>
               <div>
                 <div class="contact-link-label">Location</div>
                 <div class="contact-link-value">Mississauga, ON · Canada</div>
               </div>
-            </a>
+            </div>
           </div>
         </div>
 
@@ -941,7 +941,9 @@
         <div class="reveal delay-2">
           <div class="contact-form-area">
             <div class="form-title">Send a Message</div>
-            <form id="contact-form" novalidate>
+            <form id="contact-form" name="contact" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+              <input type="hidden" name="form-name" value="contact">
+              <p class="hidden" style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="f-name">Name</label>

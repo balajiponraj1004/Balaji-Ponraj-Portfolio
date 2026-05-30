@@ -12,3 +12,6 @@ Thumbs.db
 *.ait
 *.idml
 *.cdr
+
+# Local Netlify folder
+.netlify

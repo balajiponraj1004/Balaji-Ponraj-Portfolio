@@ -236,10 +236,10 @@
   const el = document.getElementById('hero-typed');
   if (!el) return;
   const phrases = [
-    'Branding. Marketing. Motion.',
-    'Strategy. Clarity. Impact.',
-    'Design that drives results.',
-    'Vision translated into visuals.'
+    'Infographics. Publications. Presentations.',
+    'Print. Digital. Brand. Delivered.',
+    'Corporate design with clarity and precision.',
+    'Brand-consistent. On brief. On time.'
   ];
   let idx = 0, charIdx = 0, deleting = false;
   const typeStep = () => {

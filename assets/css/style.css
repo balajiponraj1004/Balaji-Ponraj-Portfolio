@@ -38,7 +38,7 @@
 }
 
 /* ── Reset ── */
-*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; cursor:none !important; }
 html { scroll-behavior:smooth; font-size:16px; }
 body {
   font-family: var(--font-b);
@@ -80,6 +80,7 @@ ul,ol { list-style:none; }
   transform:translate(-50%,-50%);
   transition:transform 0.08s var(--ease), width 0.3s var(--ease), height 0.3s var(--ease), opacity 0.3s;
   mix-blend-mode:normal;
+  filter:drop-shadow(0 0 3px rgba(0,0,0,0.5));
 }
 #cursor-ring {
   position:fixed; width:36px; height:36px;
